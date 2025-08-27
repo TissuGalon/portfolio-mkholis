@@ -292,7 +292,7 @@ export default function Home() {
     );
 }
 
-export const PortfolioSection = () => {
+function PortfolioSection() {
     const { resolvedTheme } = useTheme();
 
     const projects = [
@@ -347,9 +347,9 @@ export const PortfolioSection = () => {
             </div>
         </section>
     );
-};
+}
 
-export const SosmedDock = () => {
+function SosmedDock() {
     return (
         <div className="relative">
             <Dock direction="middle" className="mt-0">
@@ -372,9 +372,9 @@ export const SosmedDock = () => {
             </Dock>
         </div>
     );
-};
+}
 
-export const Sosmed = () => {
+function Sosmed() {
     return (
         <div className="flex gap-4 justify-center md:justify-start">
             <ShinyButton color="primary">
@@ -396,9 +396,9 @@ export const Sosmed = () => {
             </ShinyButton>
         </div>
     );
-};
+}
 
-export const ModalCV = () => {
+function ModalCV() {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
     return (
@@ -447,4 +447,4 @@ export const ModalCV = () => {
             </Modal>
         </>
     );
-};
+}

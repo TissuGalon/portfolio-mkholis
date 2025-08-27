@@ -34,7 +34,7 @@ export default defineConfig([
             "@typescript-eslint": typescriptEslint,
             "jsx-a11y": fixupPluginRules(jsxA11Y),
             prettier: fixupPluginRules(prettier),
-            "@next/next": nextPlugin,
+            /* "@next/next": nextPlugin, */
         },
 
         languageOptions: {
