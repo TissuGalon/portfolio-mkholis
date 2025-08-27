@@ -32,7 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <html suppressHydrationWarning lang="en">
             <head />
             <body className={clsx("min-h-screen text-foreground bg-background font-sans antialiased", fontSans.variable)}>
-                <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
+                <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
                     <div className="relative flex flex-col h-screen">
                         <Navbar />
                         <main className="container mx-auto  pt-0 px-0 flex-grow">{children}</main>

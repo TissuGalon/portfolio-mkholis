@@ -39,8 +39,17 @@ import { Meteors } from "@/components/magicui/meteors";
 import { BorderBeam } from "@/components/magicui/border-beam";
 import { RetroGrid } from "@/components/magicui/retro-grid";
 
+import { Divider } from "@heroui/divider";
+
+import { ShineBorder } from "@/components/magicui/shine-border";
+import { Dock, DockIcon } from "@/components/magicui/dock";
+
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure, Image } from "@heroui/react";
+
 export default function Home() {
-    const { theme } = useTheme();
+    const { theme, resolvedTheme } = useTheme();
+    console.log("Selected Theme : " + theme);
+    console.log("Resolved  Theme : " + resolvedTheme);
     return (
         <div className="bg-background">
             {/* === HERO === */}
@@ -59,41 +68,23 @@ export default function Home() {
                             <RainbowButton size="lg" color="primary">
                                 <TextAnimate animation="scaleUp"> 🚀 View Projects</TextAnimate>
                             </RainbowButton>
-                            <RainbowButton size="lg" color="primary" variant="outline">
-                                <TextAnimate animation="scaleUp"> 📩 Contact Me</TextAnimate>
-                            </RainbowButton>
+                            <ModalCV />
                         </div>
                         <div className="flex gap-4 justify-center md:justify-start">
-                            <ShinyButton color="primary">
-                                <a href="https://linkedin.com/in/username" target="_blank" rel="noopener noreferrer">
-                                    <Linkedin className="w-5 h-5" />
-                                </a>
-                            </ShinyButton>
-
-                            <ShinyButton color="primary">
-                                <a href="https://github.com/username" target="_blank" rel="noopener noreferrer">
-                                    <Github className="w-5 h-5" />
-                                </a>
-                            </ShinyButton>
-
-                            <ShinyButton color="primary">
-                                <a href="https://instagram.com/username" target="_blank" rel="noopener noreferrer">
-                                    <Instagram className="w-5 h-5" />
-                                </a>
-                            </ShinyButton>
+                            <SosmedDock />
                         </div>
                     </div>
 
                     {/* Right: Photo */}
                     <div className="flex-1 flex justify-center md:justify-end">
                         <div className="w-80 h-80 md:w-[28rem] md:h-[28rem]">
-                            <img src="/images/muhammadkholis.png" alt="Muhammad Kholis" className="w-full h-full object-cover rounded-full shadow-2xl" />
+                            <img src="/images/2muhammadkholis.png" alt="Muhammad Kholis" className="w-full h-full object-cover rounded-full shadow-2xl" />
                         </div>
                     </div>
+                    <BorderBeam duration={8} size={400} />
                 </section>
                 <Ripple />
             </div>
-
             <section className="relative w-full overflow-hidden py-6">
                 {/* Background Blur Layer */}
                 <div className="absolute inset-0 bg-primary opacity-5 backdrop-blur-md" />
@@ -108,24 +99,22 @@ export default function Home() {
                     </p>
                 </motion.div>
             </section>
-
             <br />
             <br />
-
             {/* === ABOUT === */}
             <section id="about" className="max-w-6xl mx-auto px-6 py-5 flex flex-col md:flex-row items-center gap-12">
                 {/* Foto kiri */}
                 <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} className="flex-1 flex justify-center">
                     <div className="w-full h-[400px] md:h-[500px]">
-                        <img src="/images/muhammadkholis.png" alt="Muhammad Kholis" className="w-full h-full object-cover rounded-2xl shadow-2xl" />
+                        <img src="/images/2muhammadkholis.png" alt="Muhammad Kholis" className="w-full h-full object-cover rounded-2xl shadow-2xl" />
                     </div>
                 </motion.div>
 
                 {/* Teks kanan */}
                 <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} className="flex-1 text-center md:text-left">
                     {/* Judul */}
-                    <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-                        <AuroraText>ABOUT ME</AuroraText>
+                    <h1 className="text-4xl font-bold tracking-tighter md:text-5xl lg:text-7xl">
+                        <AnimatedGradientText>ABOUT ME</AnimatedGradientText>
                     </h1>
 
                     {/* Deskripsi */}
@@ -197,64 +186,74 @@ export default function Home() {
                     </div>
                 </motion.div>
             </section>
-
-            {/* === EDUCATION === */}
-            <section id="education" className="max-w-6xl mx-auto px-6 py-20">
-                <h2 className="text-4xl font-bold text-center mb-12">
-                    <AuroraText>EDUCATION</AuroraText>
+            <Divider className="my-10" />
+            {/* === EDUCATION & SKILLS === */}
+            <section id="edu-skills" className="max-w-6xl mx-auto px-6 py-5">
+                <h2 className="text-center text-4xl font-bold tracking-tighter md:text-5xl lg:text-7xl">
+                    <AnimatedGradientText>EDUCATION & SKILLS</AnimatedGradientText>
                 </h2>
+                <br />
+                <br />
+                <div className="space-y-8">
+                    {/* === EDUCATION === */}
+                    <div>
+                        <h3 className="text-2xl font-semibold mb-8 text-center">Education</h3>
+                        <div className="grid md:grid-cols-2 gap-10">
+                            {[
+                                {
+                                    title: "SMK Negeri 2 Langsa",
+                                    desc: "Rekayasa Perangkat Lunak (2019 - 2022)",
+                                    extra: "Nilai Akhir: 84,81",
+                                },
+                                {
+                                    title: "Politeknik Negeri Lhokseumawe",
+                                    desc: "Teknik Informatika (2022 - Sekarang)",
+                                    extra: "IPK Terakhir: 3.45 / 4.00",
+                                },
+                            ].map((edu, i) => (
+                                <motion.div key={i} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.2 }}>
+                                    <Card isBlurred>
+                                        <MagicCard gradientColor={resolvedTheme == "light" ? "violet" : "#e9e9e9ff"} gradientOpacity={0.1} className="p-5 rounded-2xl">
+                                            <h4 className="text-xl font-semibold">{edu.title}</h4>
+                                            <p className="text-gray-500">{edu.desc}</p>
+                                            <AuroraText className="font-medium">{edu.extra}</AuroraText>
+                                        </MagicCard>
+                                    </Card>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
 
-                <div className="grid md:grid-cols-2 gap-10">
-                    {[
-                        {
-                            title: "SMK Negeri 2 Langsa",
-                            desc: "Rekayasa Perangkat Lunak (2019 - 2022)",
-                            extra: "Nilai Akhir: 84,81",
-                        },
-                        {
-                            title: "Politeknik Negeri Lhokseumawe",
-                            desc: "Teknik Informatika (2022 - Sekarang)",
-                            extra: "IPK Terakhir: 3.45 / 4.00",
-                        },
-                    ].map((edu, i) => (
-                        <motion.div key={i} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.2 }}>
-                            <MagicCard gradientColor={theme === "dark" ? "#262626" : "#D9D9D955"} className="p-10 rounded-2xl">
-                                <h3 className="text-xl font-semibold">{edu.title}</h3>
-                                <p className="text-gray-500">{edu.desc}</p>
-                                <p className="font-medium text-violet-500">{edu.extra}</p>
-                            </MagicCard>
-                        </motion.div>
-                    ))}
+                    {/* === SKILLS === */}
+                    <div>
+                        <h3 className="text-2xl font-semibold mb-8 text-center">Skills</h3>
+                        <div className="grid md:grid-cols-4 gap-8 text-center">
+                            {[
+                                { title: "Programming", content: "Dart, PHP, HTML, JavaScript, Python" },
+                                { title: "Tools", content: "Photoshop, Premiere Pro, Blender, Figma, Canva" },
+                                { title: "Soft Skills", content: "Critical Thinking, Teamwork, Communication" },
+                                { title: "Languages", content: "Indonesia (Native), English (Communication)" },
+                            ].map((skill, i) => (
+                                <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.2 }} className="border rounded-2xl shadow-lg hover:scale-105 transition">
+                                    <MagicCard gradientColor={resolvedTheme == "light" ? "violet" : "#e9e9e9ff"} gradientOpacity={0.1} className="p-5 rounded-2xl">
+                                        <h4 className="font-semibold text-lg mb-2">{skill.title}</h4>
+                                        <p className="text-gray-600">{skill.content}</p>
+                                    </MagicCard>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </section>
+            <Divider className="my-10" />
 
-            {/* === SKILLS === */}
-            <section id="skills" className="max-w-6xl mx-auto px-6 py-20">
-                <h2 className="text-4xl font-bold text-center mb-12">
-                    <AuroraText>SKILLS</AuroraText>
-                </h2>
-                <div className="grid md:grid-cols-4 gap-8 text-center">
-                    {[
-                        { title: "Programming", content: "Dart, PHP, HTML, JavaScript, Python" },
-                        { title: "Tools", content: "Photoshop, Premiere Pro, Blender, Figma, Canva" },
-                        { title: "Soft Skills", content: "Critical Thinking, Teamwork, Communication" },
-                        { title: "Languages", content: "Indonesia (Native), English (Communication)" },
-                    ].map((skill, i) => (
-                        <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.2 }} className=" border rounded-2xl shadow-lg hover:scale-105 transition">
-                            <MagicCard gradientColor={theme === "dark" ? "#262626" : "#D9D9D955"} className="p-5 rounded-2xl">
-                                <h3 className="font-semibold text-lg mb-2">{skill.title}</h3>
-                                <p className="text-gray-600">{skill.content}</p>
-                            </MagicCard>
-                        </motion.div>
-                    ))}
-                </div>
-            </section>
+            <PortfolioSection />
 
             {/* === CONTACT === */}
             <section id="contact" className="relative overflow-hidden  flex items-center justify-center">
                 <div className="relative z-10  w-full">
                     <Card isBlurred className="p-10  shadow-2xl border border-none">
-                        <CardHeader className="flex flex-col gap-2 items-center">
+                        <CardHeader className="flex flex-col gap-2 items-center text-center">
                             <p className="text-primary">Need Any Project? </p>
                             <h1 className="text-8xl font-bold bg-gradient-to-r from-violet-500 to-indigo-500 bg-clip-text text-transparent">
                                 <AnimatedGradientText>Let’s Start</AnimatedGradientText>
@@ -276,12 +275,14 @@ export default function Home() {
                         </CardBody>
 
                         <CardFooter className="flex justify-center gap-4">
-                            <Button as="a" href="mailto:parzivalxdd@gmail.com" color="primary" radius="full" variant="shadow">
+                            {/*   <Button as="a" href="mailto:parzivalxdd@gmail.com" color="primary" radius="full" variant="shadow">
                                 Send Email
                             </Button>
                             <Button as="a" href="https://linkedin.com/in/muhammad-kholis-51ba57195" target="_blank" radius="full" variant="bordered">
                                 LinkedIn
-                            </Button>
+                            </Button> */}
+
+                            <Sosmed />
                         </CardFooter>
                     </Card>
                     <BorderBeam duration={8} size={400} />
@@ -290,3 +291,160 @@ export default function Home() {
         </div>
     );
 }
+
+export const PortfolioSection = () => {
+    const { resolvedTheme } = useTheme();
+
+    const projects = [
+        {
+            title: "Ticzy – Productivity App",
+            desc: "A daily productivity management app with To-Do, Finance, Scheduler, and Notes.",
+            link: "https://play.google.com/store/apps/details?id=com.parzello.ticzy",
+        },
+        {
+            title: "Centrepoint",
+            desc: "Community management app for POLICY organization at PNL.",
+            link: "#",
+        },
+        {
+            title: "ZelloPOS",
+            desc: "Point of Sale & Business Management System with Firebase & Flutter.",
+            link: "#",
+        },
+        {
+            title: "Personal Portfolio",
+            desc: "My personal portfolio website built with Next.js & TailwindCSS.",
+            link: "https://mkholis-portfolio.pages.dev/",
+        },
+    ];
+
+    return (
+        <section id="portfolio" className="max-w-6xl mx-auto px-6 py-20">
+            <h2 className="text-center text-4xl font-bold tracking-tighter md:text-5xl lg:text-7xl">
+                <AnimatedGradientText>PORTFOLIO</AnimatedGradientText>
+            </h2>
+            <br />
+            <br />
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                {projects.map((project, i) => (
+                    <motion.div key={i} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.2 }}>
+                        <Card isBlurred className="rounded-2xl">
+                            <MagicCard gradientColor={resolvedTheme == "light" ? "violet" : "#e9e9e9ff"} gradientOpacity={0.1} className="p-6 rounded-2xl flex flex-col justify-between h-full">
+                                <div>
+                                    <h4 className="text-xl font-semibold">{project.title}</h4>
+                                    <p className="text-gray-500 mt-2">{project.desc}</p>
+                                </div>
+                                <AuroraText className="mt-4 font-medium">
+                                    <a href={project.link} target="_blank" rel="noopener noreferrer">
+                                        🔗 View Project
+                                    </a>
+                                </AuroraText>
+                            </MagicCard>
+                        </Card>
+                    </motion.div>
+                ))}
+            </div>
+        </section>
+    );
+};
+
+export const SosmedDock = () => {
+    return (
+        <div className="relative">
+            <Dock direction="middle" className="mt-0">
+                <ShineBorder shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]} />
+                <DockIcon>
+                    <Linkedin className="w-5 h-5" />
+                </DockIcon>
+                <Divider orientation="vertical"></Divider>
+                <DockIcon>
+                    <GithubIcon className="w-5 h-5" />
+                </DockIcon>
+                <Divider orientation="vertical"></Divider>
+                <DockIcon>
+                    <Instagram className="size-6" />
+                </DockIcon>
+                <Divider orientation="vertical"></Divider>
+                <DockIcon>
+                    <Mail className="size-6" />
+                </DockIcon>
+            </Dock>
+        </div>
+    );
+};
+
+export const Sosmed = () => {
+    return (
+        <div className="flex gap-4 justify-center md:justify-start">
+            <ShinyButton color="primary">
+                <a href="https://linkedin.com/in/username" target="_blank" rel="noopener noreferrer">
+                    <Linkedin className="w-5 h-5" />
+                </a>
+            </ShinyButton>
+
+            <ShinyButton color="primary">
+                <a href="https://github.com/username" target="_blank" rel="noopener noreferrer">
+                    <Github className="w-5 h-5" />
+                </a>
+            </ShinyButton>
+
+            <ShinyButton color="primary">
+                <a href="https://instagram.com/username" target="_blank" rel="noopener noreferrer">
+                    <Instagram className="w-5 h-5" />
+                </a>
+            </ShinyButton>
+        </div>
+    );
+};
+
+export const ModalCV = () => {
+    const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+    return (
+        <>
+            <RainbowButton onClick={onOpen} size="lg" color="primary" variant="outline">
+                <TextAnimate animation="scaleUp"> 📃 Document</TextAnimate>
+            </RainbowButton>
+            <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+                <ModalContent className="bg-white/10 dark:bg-black/20 backdrop-blur-lg border border-white/20 shadow-xl">
+                    {(onClose) => (
+                        <>
+                            <ModalHeader className="flex flex-col gap-1">Download Document</ModalHeader>
+                            <ModalBody className="flex flex-col gap-4 ">
+                                <RainbowButton
+                                    size="lg"
+                                    color="primary"
+                                    onClick={() => {
+                                        window.open("/files/CV_Muhammad_Kholis.pdf", "_blank");
+                                        onClose();
+                                    }}
+                                >
+                                    <TextAnimate animation="scaleUp"> 📄 Download CV</TextAnimate>
+                                </RainbowButton>
+
+                                <RainbowButton
+                                    size="lg"
+                                    color="primary"
+                                    variant="outline"
+                                    onClick={() => {
+                                        window.open("/files/Portfolio_Muhammad_Kholis.pdf", "_blank");
+                                        onClose();
+                                    }}
+                                >
+                                    <TextAnimate animation="scaleUp"> 📑 Download Portfolio</TextAnimate>
+                                </RainbowButton>
+                            </ModalBody>
+
+                            <ModalFooter>
+                                <Button color="primary" variant="ghost" onPress={onClose}>
+                                    Close
+                                </Button>
+                            </ModalFooter>
+                        </>
+                    )}
+                </ModalContent>
+            </Modal>
+        </>
+    );
+};
