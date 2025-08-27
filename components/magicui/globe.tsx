@@ -66,6 +66,7 @@ export function Globe({
   const updateMovement = (clientX: number) => {
     if (pointerInteracting.current !== null) {
       const delta = clientX - pointerInteracting.current;
+
       pointerInteractionMovement.current = delta;
       r.set(r.get() + delta / MOVEMENT_DAMPING);
     }
@@ -94,6 +95,7 @@ export function Globe({
     });
 
     setTimeout(() => (canvasRef.current!.style.opacity = "1"), 0);
+
     return () => {
       globe.destroy();
       window.removeEventListener("resize", onResize);
@@ -108,17 +110,17 @@ export function Globe({
       )}
     >
       <canvas
+        ref={canvasRef}
         className={cn(
           "size-full opacity-0 transition-opacity duration-500 [contain:layout_paint_size]",
         )}
-        ref={canvasRef}
+        onMouseMove={(e) => updateMovement(e.clientX)}
         onPointerDown={(e) => {
           pointerInteracting.current = e.clientX;
           updatePointerInteraction(e.clientX);
         }}
-        onPointerUp={() => updatePointerInteraction(null)}
         onPointerOut={() => updatePointerInteraction(null)}
-        onMouseMove={(e) => updateMovement(e.clientX)}
+        onPointerUp={() => updatePointerInteraction(null)}
         onTouchMove={(e) =>
           e.touches[0] && updateMovement(e.touches[0].clientX)
         }

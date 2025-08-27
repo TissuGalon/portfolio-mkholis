@@ -1,7 +1,8 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { motion, MotionStyle, Transition } from "motion/react";
+
+import { cn } from "@/lib/utils";
 
 interface BorderBeamProps {
   /**
@@ -73,11 +74,17 @@ export const BorderBeam = ({
       }
     >
       <motion.div
+        animate={{
+          offsetDistance: reverse
+            ? [`${100 - initialOffset}%`, `${-initialOffset}%`]
+            : [`${initialOffset}%`, `${100 + initialOffset}%`],
+        }}
         className={cn(
           "absolute aspect-square",
           "bg-gradient-to-l from-[var(--color-from)] via-[var(--color-to)] to-transparent",
           className,
         )}
+        initial={{ offsetDistance: `${initialOffset}%` }}
         style={
           {
             width: size,
@@ -87,12 +94,6 @@ export const BorderBeam = ({
             ...style,
           } as MotionStyle
         }
-        initial={{ offsetDistance: `${initialOffset}%` }}
-        animate={{
-          offsetDistance: reverse
-            ? [`${100 - initialOffset}%`, `${-initialOffset}%`]
-            : [`${initialOffset}%`, `${100 + initialOffset}%`],
-        }}
         transition={{
           repeat: Infinity,
           ease: "linear",

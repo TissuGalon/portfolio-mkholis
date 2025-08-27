@@ -1,5 +1,7 @@
 "use client";
 
+import type { MotionProps } from "motion/react";
+
 import { cva, type VariantProps } from "class-variance-authority";
 import {
   motion,
@@ -8,7 +10,6 @@ import {
   useSpring,
   useTransform,
 } from "motion/react";
-import type { MotionProps } from "motion/react";
 import React, { PropsWithChildren, useRef } from "react";
 
 import { cn } from "@/lib/utils";
@@ -63,6 +64,7 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
             distance: iconDistance,
           });
         }
+
         return child;
       });
     };
@@ -70,8 +72,8 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
     return (
       <motion.div
         ref={ref}
-        onMouseMove={(e) => mouseX.set(e.pageX)}
         onMouseLeave={() => mouseX.set(Infinity)}
+        onMouseMove={(e) => mouseX.set(e.pageX)}
         {...props}
         className={cn(dockVariants({ className }), {
           "items-start": direction === "top",
@@ -115,6 +117,7 @@ const DockIcon = ({
 
   const distanceCalc = useTransform(mouseX ?? defaultMouseX, (val: number) => {
     const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
+
     return val - bounds.x - bounds.width / 2;
   });
 
@@ -135,12 +138,12 @@ const DockIcon = ({
   return (
     <motion.div
       ref={ref}
-      style={{ width: scaleSize, height: scaleSize, padding }}
       className={cn(
         "flex aspect-square cursor-pointer items-center justify-center rounded-full",
         disableMagnification && "transition-colors hover:bg-muted-foreground",
         className,
       )}
+      style={{ width: scaleSize, height: scaleSize, padding }}
       {...props}
     >
       <div>{children}</div>

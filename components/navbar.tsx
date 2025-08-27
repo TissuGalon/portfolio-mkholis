@@ -7,31 +7,20 @@ import {
   NavbarItem,
   NavbarMenuItem,
 } from "@heroui/navbar";
-import { Button } from "@heroui/button";
 import { Kbd } from "@heroui/kbd";
 import { Link } from "@heroui/link";
 import { Input } from "@heroui/input";
 import { link as linkStyles } from "@heroui/theme";
 import NextLink from "next/link";
 import clsx from "clsx";
+import { ChevronRight } from "lucide-react";
 
-import { siteConfig } from "@/config/site";
-import { ThemeSwitch } from "@/components/theme-switch";
-import {
-  TwitterIcon,
-  GithubIcon,
-  DiscordIcon,
-  HeartFilledIcon,
-  SearchIcon,
-  Logo,
-} from "@/components/icons";
-
-import { AnimatedThemeToggler } from "@/components/magicui/animated-theme-toggler";
-import { RainbowButton } from "./magicui/rainbow-button";
 import { TextAnimate } from "./magicui/text-animate";
 
+import { siteConfig } from "@/config/site";
+import { SearchIcon, Logo } from "@/components/icons";
+import { AnimatedThemeToggler } from "@/components/magicui/animated-theme-toggler";
 import { AnimatedGradientText } from "@/components/magicui/animated-gradient-text";
-import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export const Navbar = () => {

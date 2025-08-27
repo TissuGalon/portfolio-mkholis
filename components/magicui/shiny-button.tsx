@@ -1,8 +1,9 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { motion, type MotionProps } from "motion/react";
 import React from "react";
+
+import { cn } from "@/lib/utils";
 
 const animationProps: MotionProps = {
   initial: { "--x": "100%", scale: 0.8 },
@@ -56,6 +57,7 @@ export const ShinyButton = React.forwardRef<
         {children}
       </span>
       <span
+        className="absolute inset-0 z-10 block rounded-[inherit] p-px"
         style={{
           mask: "linear-gradient(rgb(0,0,0), rgb(0,0,0)) content-box exclude,linear-gradient(rgb(0,0,0), rgb(0,0,0))",
           WebkitMask:
@@ -63,7 +65,6 @@ export const ShinyButton = React.forwardRef<
           backgroundImage:
             "linear-gradient(-75deg,var(--primary)/10% calc(var(--x)+20%),var(--primary)/50% calc(var(--x)+25%),var(--primary)/10% calc(var(--x)+100%))",
         }}
-        className="absolute inset-0 z-10 block rounded-[inherit] p-px"
       />
     </motion.button>
   );
