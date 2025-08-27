@@ -1,50 +1,27 @@
 "use client";
 
-import { Link } from "@heroui/link";
-import { Snippet } from "@heroui/snippet";
-import { Code } from "@heroui/code";
-import { Button } from "@heroui/react";
 import { motion } from "framer-motion";
+import { useTheme } from "next-themes";
 
-import { siteConfig } from "@/config/site";
-import { title, subtitle } from "@/components/primitives";
-import { GithubIcon } from "@/components/icons";
+// === HeroUI ===
+import { Button, Card, CardHeader, CardBody, CardFooter, Input, Progress, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure, Image } from "@heroui/react";
+import { Divider } from "@heroui/divider";
+
+// === MagicUI ===
 import { Ripple } from "@/components/magicui/ripple";
 import { RainbowButton } from "@/components/magicui/rainbow-button";
 import { ShinyButton } from "@/components/magicui/shiny-button";
-import { GridBeams } from "@/components/magicui/grid-beams";
-
-import { cn } from "@/lib/utils";
-import { DotPattern } from "@/components/magicui/dot-pattern";
-
-import { Github, Instagram, Linkedin, Mail, Phone } from "lucide-react";
-
 import { TextAnimate } from "@/components/magicui/text-animate";
 import { AuroraText } from "@/components/magicui/aurora-text";
-
-import { MagicCard } from "@/components/magicui/magic-card";
-
-import { Card, CardHeader, CardBody, CardFooter, Input } from "@heroui/react";
-
-import { Progress } from "@heroui/react";
-
-import { useTheme } from "next-themes";
-
 import { AnimatedGradientText } from "@/components/magicui/animated-gradient-text";
-
-import { AnimatedGridPattern } from "@/components/magicui/animated-grid-pattern";
-
-import { NeonGradientCard } from "@/components/magicui/neon-gradient-card";
-import { Meteors } from "@/components/magicui/meteors";
 import { BorderBeam } from "@/components/magicui/border-beam";
-import { RetroGrid } from "@/components/magicui/retro-grid";
-
-import { Divider } from "@heroui/divider";
-
 import { ShineBorder } from "@/components/magicui/shine-border";
 import { Dock, DockIcon } from "@/components/magicui/dock";
+import { MagicCard } from "@/components/magicui/magic-card";
 
-import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure, Image } from "@heroui/react";
+// === Icons ===
+import { GithubIcon } from "@/components/icons";
+import { Github, Instagram, Linkedin, Mail, Phone } from "lucide-react";
 
 export default function Home() {
     const { theme, resolvedTheme } = useTheme();
@@ -229,10 +206,22 @@ export default function Home() {
                         <h3 className="text-2xl font-semibold mb-8 text-center">Skills</h3>
                         <div className="grid md:grid-cols-4 gap-8 text-center">
                             {[
-                                { title: "Programming", content: "Dart, PHP, HTML, JavaScript, Python" },
-                                { title: "Tools", content: "Photoshop, Premiere Pro, Blender, Figma, Canva" },
-                                { title: "Soft Skills", content: "Critical Thinking, Teamwork, Communication" },
-                                { title: "Languages", content: "Indonesia (Native), English (Communication)" },
+                                {
+                                    title: "Programming",
+                                    content: "Dart, PHP, HTML, JavaScript, Python",
+                                },
+                                {
+                                    title: "Tools",
+                                    content: "Photoshop, Premiere Pro, Blender, Figma, Canva",
+                                },
+                                {
+                                    title: "Soft Skills",
+                                    content: "Critical Thinking, Teamwork, Communication",
+                                },
+                                {
+                                    title: "Languages",
+                                    content: "Indonesia (Native), English (Communication)",
+                                },
                             ].map((skill, i) => (
                                 <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.2 }} className="border rounded-2xl shadow-lg hover:scale-105 transition">
                                     <MagicCard gradientColor={resolvedTheme == "light" ? "violet" : "#e9e9e9ff"} gradientOpacity={0.1} className="p-5 rounded-2xl">
@@ -432,7 +421,7 @@ function ModalCV() {
                                         onClose();
                                     }}
                                 >
-                                    <TextAnimate animation="scaleUp"> 📑 Download Portfolio</TextAnimate>
+                                    <TextAnimate animation="scaleUp">📑 Download Portfolio</TextAnimate>
                                 </RainbowButton>
                             </ModalBody>
 
