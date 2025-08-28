@@ -23,6 +23,7 @@ import { MagicCard } from "@/components/magicui/magic-card";
 
 // === Icons ===
 import { GithubIcon } from "@/components/icons";
+import { SiFlutter, SiFirebase, SiMysql, SiNextdotjs, SiTailwindcss } from "react-icons/si";
 
 export default function Home() {
     const { theme, resolvedTheme } = useTheme();
@@ -37,30 +38,42 @@ export default function Home() {
                 <section className="flex flex-col-reverse md:flex-row items-center justify-between gap-8 py-12 md:py-20">
                     {/* Left: Text */}
                     <div className="flex-1 text-center md:text-left space-y-6">
-                        <h1 className="text-4xl font-bold tracking-tighter md:text-5xl lg:text-7xl">
-                            Hi, I’m <br />
-                            <AnimatedGradientText>Muhammad Kholis</AnimatedGradientText>
-                        </h1>
+                        <BlurFade delay={0.3} inView>
+                            <h1 className="text-4xl font-bold tracking-tighter md:text-5xl lg:text-7xl">
+                                Hi, I’m <br />
+                                <AnimatedGradientText>Muhammad Kholis</AnimatedGradientText>
+                            </h1>
+                        </BlurFade>
                         <TextAnimate animation="slideLeft" className="text-default-500 text-lg md:text-xl max-w-lg">
                             A passionate Flutter & Web Developer who loves building modern, fast, and beautiful applications.
                         </TextAnimate>
-                        <div className="flex gap-4 justify-center md:justify-start">
-                            <RainbowButton color="primary" size="lg">
-                                <TextAnimate animation="scaleUp"> 🚀 View Projects</TextAnimate>
-                            </RainbowButton>
-                            <ModalCV />
-                        </div>
-                        <div className="flex gap-4 justify-center md:justify-start">
-                            <Sosmed />
-                        </div>
+
+                        <BlurFade delay={0.4} inView>
+                            <div className="flex gap-4 justify-center md:justify-start">
+                                <a href="#portfolio">
+                                    <RainbowButton color="primary" size="lg">
+                                        <TextAnimate animation="scaleUp"> 🚀 View Projects</TextAnimate>
+                                    </RainbowButton>
+                                </a>
+                                <ModalCV />
+                            </div>
+                        </BlurFade>
+                        <BlurFade delay={0.4} inView>
+                            <div className="flex gap-4 justify-center md:justify-start">
+                                <Sosmed />
+                            </div>
+                        </BlurFade>
                     </div>
 
                     {/* Right: Photo */}
-                    <div className="flex-1 flex justify-center md:justify-end">
-                        <div className="w-80 h-80 md:w-[28rem] md:h-[28rem]">
-                            <img alt="Muhammad Kholis" className="w-full h-full object-cover rounded-full shadow-2xl" src="/images/2muhammadkholis.png" />
+                    <BlurFade delay={0.6} inView>
+                        <div className="flex-1 flex justify-center md:justify-end">
+                            <div className="w-80 h-80 md:w-[28rem] md:h-[28rem]">
+                                <img alt="Muhammad Kholis" className="w-full h-full object-cover rounded-full shadow-2xl" src="/images/2muhammadkholis.png" />
+                            </div>
                         </div>
-                    </div>
+                    </BlurFade>
+
                     <BorderBeam duration={8} size={400} />
                 </section>
                 <Ripple />
@@ -71,12 +84,9 @@ export default function Home() {
 
                 {/* Running Text */}
                 <motion.div animate={{ x: ["0%", "-100%"] }} className="flex whitespace-nowrap relative" transition={{ repeat: Infinity, duration: 20, ease: "linear" }}>
-                    <p className="text-1xl font-bold bg-background bg-clip-text text-transparent px-8">
-                        <div className="text-primary">🚀 Flutter · 💻 Web Development · 📱 Mobile Apps · 🎨 UI/UX Design · 🔥 Firebase · ⚡ Next.js · 🛠️ Productivity</div>
-                    </p>
-                    <p className="text-1xl font-bold bg-background bg-clip-text text-transparent px-8">
-                        <div className="text-primary">🚀 Flutter · 💻 Web Development · 📱 Mobile Apps · 🎨 UI/UX Design · 🔥 Firebase · ⚡ Next.js · 🛠️ Productivity</div>
-                    </p>
+                    <p className="text-1xl font-bold bg-background bg-clip-text text-primary px-8">🚀 Flutter · 💻 Web Development · 📱 Mobile Apps · 🎨 UI/UX Design · 🔥 Firebase · ⚡ Next.js · 🛠️ Productivity</p>
+                    <p className="text-1xl font-bold bg-background bg-clip-text text-primary px-8">🚀 Flutter · 💻 Web Development · 📱 Mobile Apps · 🎨 UI/UX Design · 🔥 Firebase · ⚡ Next.js · 🛠️ Productivity</p>
+                    <p className="text-1xl font-bold bg-background bg-clip-text text-primary px-8">🚀 Flutter · 💻 Web Development · 📱 Mobile Apps · 🎨 UI/UX Design · 🔥 Firebase · ⚡ Next.js · 🛠️ Productivity</p>
                 </motion.div>
             </section>
             <br />
@@ -86,7 +96,9 @@ export default function Home() {
                 {/* Foto kiri */}
                 <motion.div className="flex-1 flex justify-center" initial={{ opacity: 0, x: -50 }} transition={{ duration: 0.6 }} whileInView={{ opacity: 1, x: 0 }}>
                     <div className="w-full h-[400px] md:h-[500px]">
-                        <img alt="Muhammad Kholis" className="w-full h-full object-cover rounded-2xl shadow-2xl" src="/images/2muhammadkholis.png" />
+                        <MagicCard className="p-5 rounded-2xl" gradientColor={resolvedTheme == "light" ? "violet" : "#e9e9e9ff"} gradientOpacity={0.1}>
+                            <img alt="Muhammad Kholis" className="w-full h-full object-cover rounded-2xl shadow-2xl" src="/images/muhammadkholis_ui_.jpg" />
+                        </MagicCard>
                     </div>
                 </motion.div>
 
@@ -96,14 +108,18 @@ export default function Home() {
                     <h1 className="text-4xl font-bold tracking-tighter md:text-5xl lg:text-7xl">
                         <AnimatedGradientText>ABOUT ME</AnimatedGradientText>
                     </h1>
-
                     {/* Deskripsi */}
-                    <div className="text-primary text-md leading-relaxed mt-6">
-                        <TextAnimate>Saya adalah mahasiswa aktif Program Studi Teknik Informatika di Politeknik Negeri Lhokseumawe dengan minat dan keahlian di bidang pengembangan aplikasi mobile dan web. Berpengalaman dalam membangun berbagai proyek, mulai dari website organisasi hingga aplikasi produktivitas berbasis Flutter, Firebase, dan SQLite. Terbiasa bekerja dalam tim, semangat belajar tinggi, dan selalu berusaha menghasilkan karya berkualitas.</TextAnimate>
-                    </div>
-
+                    <MagicCard className="p-5 rounded-2xl mt-6" gradientColor={resolvedTheme == "light" ? "violet" : "#e9e9e9ff"} gradientOpacity={0.1}>
+                        <div className="text-primary text-md leading-relaxed ">
+                            <TextAnimate>Saya adalah mahasiswa aktif Program Studi Teknik Informatika di Politeknik Negeri Lhokseumawe dengan minat dan keahlian di bidang pengembangan aplikasi mobile dan web. Berpengalaman dalam membangun berbagai proyek, mulai dari website organisasi hingga aplikasi produktivitas berbasis Flutter, Firebase, dan SQLite. Terbiasa bekerja dalam tim, semangat belajar tinggi, dan selalu berusaha menghasilkan karya berkualitas.</TextAnimate>
+                        </div>
+                    </MagicCard>
+                    <div className="my-4" />
+                    <SkillDock />
+                    <div className="my-4" />
+                    <SkillDock2 />
                     {/* Skill Bars */}
-                    <div className="mt-10 space-y-6 max-w-md">
+                    {/*  <div className="mt-10 space-y-6 max-w-md">
                         <Progress
                             classNames={{
                                 base: "w-full",
@@ -163,7 +179,7 @@ export default function Home() {
                             size="sm"
                             value={65}
                         />
-                    </div>
+                    </div> */}
                 </motion.div>
             </section>
             <Divider className="my-10" />
@@ -177,7 +193,10 @@ export default function Home() {
                 <div className="space-y-8">
                     {/* === EDUCATION === */}
                     <div>
-                        <h3 className="text-2xl font-semibold mb-8 text-center">Education</h3>
+                        <h3 className="text-2xl font-semibold  text-start">
+                            <AnimatedGradientText>EDUCATION</AnimatedGradientText>
+                        </h3>
+                        <Divider className="my-4 " />
                         <div className="grid md:grid-cols-2 gap-10">
                             {[
                                 {
@@ -195,7 +214,7 @@ export default function Home() {
                                     <Card isBlurred>
                                         <MagicCard className="p-5 rounded-2xl" gradientColor={resolvedTheme == "light" ? "violet" : "#e9e9e9ff"} gradientOpacity={0.1}>
                                             <h4 className="text-xl font-semibold">{edu.title}</h4>
-                                            <p className="text-gray-500">{edu.desc}</p>
+                                            <p className="dark:text-gray-400 text-gray-600">{edu.desc}</p>
                                             <AuroraText className="font-medium">{edu.extra}</AuroraText>
                                         </MagicCard>
                                     </Card>
@@ -204,9 +223,14 @@ export default function Home() {
                         </div>
                     </div>
 
+                    <br />
+
                     {/* === SKILLS === */}
                     <div>
-                        <h3 className="text-2xl font-semibold mb-8 text-center">Skills</h3>
+                        <h3 className="text-2xl font-semibold  text-start">
+                            <AnimatedGradientText>SKILLS</AnimatedGradientText>
+                        </h3>
+                        <Divider className="my-4" />
                         <div className="grid md:grid-cols-4 gap-8 text-center">
                             {[
                                 {
@@ -228,8 +252,8 @@ export default function Home() {
                             ].map((skill, i) => (
                                 <motion.div key={i} className="border rounded-2xl shadow-lg hover:scale-105 transition" initial={{ opacity: 0, y: 30 }} transition={{ delay: i * 0.2 }} whileInView={{ opacity: 1, y: 0 }}>
                                     <MagicCard className="p-5 rounded-2xl" gradientColor={resolvedTheme == "light" ? "violet" : "#e9e9e9ff"} gradientOpacity={0.1}>
-                                        <h4 className="font-semibold text-lg mb-2">{skill.title}</h4>
-                                        <p className="text-gray-600">{skill.content}</p>
+                                        <AuroraText className="font-semibold text-lg mb-2">{skill.title}</AuroraText>
+                                        <p className="dark:text-gray-400 text-gray-600">{skill.content}</p>
                                     </MagicCard>
                                 </motion.div>
                             ))}
@@ -242,7 +266,7 @@ export default function Home() {
             <PortfolioSection />
 
             {/* === CONTACT === */}
-            <section className="relative overflow-hidden  flex items-center justify-center" id="contact">
+            <section className="relative overflow-hidden  flex items-center justify-center " id="contact">
                 <div className="relative z-10  w-full">
                     <Card isBlurred className="p-10  shadow-2xl border border-none">
                         <CardHeader className="flex flex-col gap-2 items-center text-center">
@@ -252,18 +276,16 @@ export default function Home() {
                             </h1>
                         </CardHeader>
 
-                        <CardBody className="mt-4 flex flex-col md:flex-row items-center justify-center gap-8 text-lg">
+                        <CardBody className="mt-6 flex flex-col md:flex-row items-center justify-center gap-3 text-lg">
                             {/* Phone */}
-                            <p className="flex items-center gap-2">
-                                <Phone className="w-5 h-5 text-violet-500" />
-                                <span className="font-medium">+62 8516-1787-501</span>
-                            </p>
+                            <Button as="a" href="tel:+6285161787501" variant="bordered" color="primary" radius="lg" className="border-gray-100 dark:border-gray-800" startContent={<Phone className="w-5 h-5 text-white-500" />}>
+                                +62 8516-1787-501
+                            </Button>
 
                             {/* Email */}
-                            <p className="flex items-center gap-2">
-                                <Mail className="w-5 h-5 text-violet-500" />
-                                <span className="font-medium">parzivalxdd@gmail.com</span>
-                            </p>
+                            <Button as="a" href="mailto:parzivalxdd@gmail.com" variant="bordered" color="primary" radius="lg" className="border-gray-100 dark:border-gray-800" startContent={<Mail className="w-5 h-5 text-white-500" />}>
+                                parzivalxdd@gmail.com
+                            </Button>
                         </CardBody>
 
                         <CardFooter className="flex justify-center gap-4">
@@ -285,6 +307,9 @@ export default function Home() {
 }
 
 import { useState } from "react";
+import { ShimmerButton } from "@/components/magicui/shimmer-button";
+import { BlurFade } from "@/components/magicui/blur-fade";
+import { RetroGrid } from "@/components/magicui/retro-grid";
 
 function PortfolioSection() {
     const { resolvedTheme } = useTheme();
@@ -331,7 +356,7 @@ function PortfolioSection() {
     });
 
     return (
-        <section className="max-w-6xl mx-auto px-6 py-20" id="portfolio">
+        <section className="max-w-6xl mx-auto px-6 pb-20 pt-10" id="portfolio">
             <h2 className="text-center text-4xl font-bold tracking-tighter md:text-5xl lg:text-7xl">
                 <AnimatedGradientText>PORTFOLIO</AnimatedGradientText>
             </h2>
@@ -341,28 +366,45 @@ function PortfolioSection() {
             {/* Wrapper Chips + Search Bar */}
             <div className="flex justify-between items-center flex-wrap gap-4 mb-8">
                 {/* Search Bar */}
-                <div className="w-full sm:w-auto">
+                <div className="flex-1 min-w-[200px] relative">
                     <Input
                         type="text"
                         placeholder="Search projects..."
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
-                        variant="bordered" // bisa "flat", "bordered", "underlined", "faded"
-                        radius="lg" // rounded (sm, md, lg, full)
-                        className="max-w-md w-full"
-                        color="primary" // bisa "primary", "secondary", "success", "warning", "danger"
+                        variant="bordered"
+                        radius="lg"
+                        color="primary"
+                        classNames={{
+                            inputWrapper: "border border-gray-300 dark:border-gray-600 focus-within:border-violet-500 dark:focus-within:border-violet-400 transition-colors",
+                            input: "text-gray-800 dark:text-gray-200 placeholder:text-gray-400 dark:placeholder:text-gray-500",
+                        }}
                     />
+
+                    {/* Clear Button (X) */}
+                    {search && (
+                        <button type="button" onClick={() => setSearch("")} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-violet-600 hover:cursor-pointer transition-colors">
+                            ✕
+                        </button>
+                    )}
                 </div>
 
                 {/* Filter Chips */}
                 <div className="flex gap-3 flex-wrap">
                     {badges.map((b) => (
-                        <Chip key={b} variant={filter === b ? "flat" : "dot"} color={filter === b ? "warning" : "warning"} size="lg" className="cursor-pointer transition-all duration-300" onClick={() => setFilter(b)}>
+                        <Chip key={b} variant={filter === b ? "flat" : "dot"} color="warning" size="lg" className={filter === b ? "cursor-pointer transition-all duration-300 " : "cursor-pointer transition-all duration-300  border border-gray-300 dark:border-gray-600"} onClick={() => setFilter(b)}>
                             {b}
                         </Chip>
                     ))}
                 </div>
             </div>
+
+            {/* Total Projects */}
+            <p className="text-sm  mb-6">
+                Showing <span className="font-semibold">{filteredProjects.length}</span> {filteredProjects.length === 1 ? "project" : "projects"}
+            </p>
+
+            <Divider className="my-5" />
 
             {/* Projects Grid with AnimatePresence */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -380,7 +422,18 @@ function PortfolioSection() {
                                     {/* Cover + Badge */}
                                     <div className="relative w-full h-40 md:h-48 lg:h-52 overflow-hidden rounded-t-2xl">
                                         <motion.img src={project.cover} alt={project.title} className="w-full h-full object-cover" whileHover={{ scale: 1.1, rotate: 3 }} transition={{ type: "spring", stiffness: 200, damping: 15 }} />
-                                        <span className="absolute top-3 right-3 bg-violet-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">{project.badge}</span>
+
+                                        {/* Glass Badge */}
+                                        <button
+                                            type="button"
+                                            className="absolute top-3 right-3 px-3 py-1 text-xs font-semibold rounded-full 
+               bg-white/20 dark:bg-black/30 text-white 
+               backdrop-blur-md border border-white/30 
+               shadow-md hover:bg-white/30 dark:hover:bg-black/40 
+               transition-colors"
+                                        >
+                                            {project.badge}
+                                        </button>
                                     </div>
 
                                     {/* Content */}
@@ -389,11 +442,11 @@ function PortfolioSection() {
                                             <h4 className="text-xl font-semibold">{project.title}</h4>
                                             <p className="text-gray-500 mt-2">{project.desc}</p>
                                         </div>
-                                        <AuroraText className="mt-4 font-medium">
-                                            <a href={project.link} rel="noopener noreferrer" target="_blank">
-                                                🔗 View Project
-                                            </a>
-                                        </AuroraText>
+                                        <div className="my-4"></div>
+
+                                        <ShimmerButton className="shadow-2xl" shimmerColor={resolvedTheme == "light" ? "violet" : "violet"}>
+                                            <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">View Project</span>
+                                        </ShimmerButton>
                                     </div>
                                 </MagicCard>
                             </Card>
@@ -402,6 +455,93 @@ function PortfolioSection() {
                 </AnimatePresence>
             </div>
         </section>
+    );
+}
+
+function SkillDock() {
+    return (
+        <div className="relative">
+            <Dock className="mt-0" direction="middle">
+                <ShineBorder shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]} />
+
+                <DockIcon>
+                    <img src="/icons/dart.png" alt="Dart" className="w-7 h-auto" />
+                </DockIcon>
+                <Divider orientation="vertical" />
+
+                <DockIcon>
+                    <img src="/icons/flutter.png" alt="Flutter" className="w-7 h-auto" />
+                </DockIcon>
+                <Divider orientation="vertical" />
+
+                <DockIcon>
+                    <img src="/icons/firebase.png" alt="Firebase" className="w-7 h-auto" />
+                </DockIcon>
+                <Divider orientation="vertical" />
+
+                <DockIcon>
+                    <img src="/icons/react.png" alt="React" className="w-7 h-auto" />
+                </DockIcon>
+                <Divider orientation="vertical" />
+
+                <DockIcon>
+                    <img src="/icons/nextjs.svg" alt="Next.js" className="w-7 h-auto" />
+                </DockIcon>
+                <Divider orientation="vertical" />
+
+                <DockIcon>
+                    <img src="/icons/tailwind.png" alt="TailwindCSS" className="w-7 h-auto" />
+                </DockIcon>
+                <Divider orientation="vertical" />
+
+                <DockIcon>
+                    <img src="/icons/php.png" alt="PHP" className="w-7 h-auto" />
+                </DockIcon>
+            </Dock>
+        </div>
+    );
+}
+function SkillDock2() {
+    return (
+        <div className="relative">
+            <Dock className="mt-0" direction="middle">
+                <ShineBorder shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]} />
+
+                <DockIcon>
+                    <img src="/icons/photoshop.png" alt="Dart" className="w-7 h-auto" />
+                </DockIcon>
+                <Divider orientation="vertical" />
+
+                <DockIcon>
+                    <img src="/icons/premierepro.png" alt="Flutter" className="w-7 h-auto" />
+                </DockIcon>
+                <Divider orientation="vertical" />
+
+                <DockIcon>
+                    <img src="/icons/blender3d.png" alt="Firebase" className="w-7 h-auto" />
+                </DockIcon>
+                <Divider orientation="vertical" />
+
+                <DockIcon>
+                    <img src="/icons/figma.svg" alt="React" className="w-7 h-auto" />
+                </DockIcon>
+                <Divider orientation="vertical" />
+
+                <DockIcon>
+                    <img src="/icons/androidstudio.png" alt="Next.js" className="w-7 h-auto" />
+                </DockIcon>
+                <Divider orientation="vertical" />
+
+                <DockIcon>
+                    <img src="/icons/msoffice.png" alt="TailwindCSS" className="w-7 h-auto" />
+                </DockIcon>
+                <Divider orientation="vertical" />
+
+                <DockIcon>
+                    <img src="/icons/canva.png" alt="PHP" className="w-7 h-auto" />
+                </DockIcon>
+            </Dock>
+        </div>
     );
 }
 
@@ -433,23 +573,23 @@ function SosmedDock() {
 function Sosmed() {
     return (
         <div className="flex gap-4 justify-center md:justify-start">
-            <ShinyButton color="primary">
-                <a href="https://linkedin.com/in/username" rel="noopener noreferrer" target="_blank">
+            <a href="https://www.linkedin.com/in/muhammad-kholis-51ba57195/" rel="noopener noreferrer" target="_blank">
+                <ShinyButton color="primary">
                     <Linkedin className="w-5 h-5" />
-                </a>
-            </ShinyButton>
+                </ShinyButton>
+            </a>
 
-            <ShinyButton color="primary">
-                <a href="https://github.com/username" rel="noopener noreferrer" target="_blank">
+            <a href="https://github.com/TissuGalon" rel="noopener noreferrer" target="_blank">
+                <ShinyButton color="primary">
                     <Github className="w-5 h-5" />
-                </a>
-            </ShinyButton>
+                </ShinyButton>
+            </a>
 
-            <ShinyButton color="primary">
-                <a href="https://instagram.com/username" rel="noopener noreferrer" target="_blank">
+            <a href="https://www.instagram.com/its.przvl._" rel="noopener noreferrer" target="_blank">
+                <ShinyButton color="primary">
                     <Instagram className="w-5 h-5" />
-                </a>
-            </ShinyButton>
+                </ShinyButton>
+            </a>
         </div>
     );
 }

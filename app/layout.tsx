@@ -42,6 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         <main className="container mx-auto  pt-0 px-0 flex-grow cursor-none-">
                             {children} <SpeedInsights /> {/* <SmoothCursor /> */}
                         </main>
+
                         <footer className="w-full flex items-center justify-center py-3 bg-background">
                             <Link isExternal className="flex items-center gap-1 text-current" href="https://heroui.com?utm_source=next-app-template" title="heroui.com homepage">
                                 <span className="text-default-600">Powered by</span>
