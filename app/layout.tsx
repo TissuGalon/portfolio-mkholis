@@ -22,6 +22,7 @@ export const metadata: Metadata = {
     icons: {
         icon: "/favicon.ico",
     },
+    authors: [{ name: "Muhammad Kholis", url: "https://www.instagram.com/its.przvl._/" }],
 };
 
 export const viewport: Viewport = {
@@ -36,11 +37,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <html suppressHydrationWarning lang="en">
             <head />
             <body className={clsx("min-h-screen text-foreground bg-background font-sans antialiased", fontSans.variable)}>
-                <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
+                <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
                     <div className="relative flex flex-col h-screen">
                         <Navbar />
-                        <main className="container mx-auto  pt-0 px-0 flex-grow cursor-none-">
-                            {children} <SpeedInsights /> {/* <SmoothCursor /> */}
+                        <main className="relative container mx-auto flex-grow cursor-none-">
+                            {/* Content layer */}
+                            <div className="relative z-10">
+                                {children}
+                                <SpeedInsights />
+                                {/* <SmoothCursor /> */}
+                            </div>
                         </main>
 
                         <footer className="w-full flex items-center justify-center py-3 bg-background">

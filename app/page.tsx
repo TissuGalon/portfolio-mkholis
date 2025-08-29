@@ -33,6 +33,7 @@ export default function Home() {
 
     return (
         <div className="bg-background overflow-x-hidden">
+            <div className="absolute inset-0 bg-[url('/images/nobg.png')]  bg-cover bg-center bg-fixed bg-blend-screen" style={{ opacity: 0.1 }} />
             {/* === HERO === */}
             <div className="relative flex  w-full flex-col items-center justify-center overflow-hidden rounded-lg bg-background">
                 <section className="flex flex-col-reverse md:flex-row items-center justify-between gap-8 py-12 md:py-20">
@@ -78,7 +79,7 @@ export default function Home() {
                 </section>
                 <Ripple />
             </div>
-            <section className="relative w-full overflow-hidden py-6">
+            <section className="bg-background relative w-full overflow-hidden py-6">
                 {/* Background Blur Layer */}
                 <div className="absolute inset-0 bg-primary opacity-5 backdrop-blur-md" />
 
@@ -184,7 +185,7 @@ export default function Home() {
             </section>
             <Divider className="my-10" />
             {/* === EDUCATION & SKILLS === */}
-            <section className="max-w-6xl mx-auto px-6 py-5" id="edu-skills">
+            <section className="max-w-6xl mx-auto px-6 py-5" id="education">
                 <h2 className="text-center text-4xl font-bold tracking-tighter md:text-5xl lg:text-7xl">
                     <AnimatedGradientText>EDUCATION & SKILLS</AnimatedGradientText>
                 </h2>

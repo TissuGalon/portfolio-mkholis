@@ -377,3 +377,29 @@
 html {
     scroll-behavior: smooth;
 }
+
+/* MY CSS */
+@keyframes myaurora {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    50% {
+        transform: translate(-50%, -50%) rotate(180deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.myaurora {
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    top: 50%;
+    left: 50%;
+    background: radial-gradient(circle at center, rgba(168, 85, 247, 0.4) 0%, rgba(59, 130, 246, 0.3) 40%, rgba(16, 185, 129, 0.2) 70%, transparent 100%);
+    filter: blur(100px);
+    animation: aurora 20s linear infinite;
+}
+
+/* MY CSS */
