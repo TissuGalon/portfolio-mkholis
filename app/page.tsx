@@ -36,7 +36,7 @@ export default function Home() {
                 className="
     absolute inset-0 
     hidden dark:block 
-    bg-[url('/images/nobg.png')] 
+    bg-[url('/images/nobg.webp')] 
     bg-cover bg-center bg-fixed bg-blend-screen
   "
                 style={{ opacity: 0.15 }}
@@ -78,7 +78,7 @@ export default function Home() {
                     <BlurFade delay={0.6} inView>
                         <div className="flex-1 flex justify-center md:justify-end">
                             <div className="w-80 h-80 md:w-[28rem] md:h-[28rem]">
-                                <img alt="Muhammad Kholis" className="w-full h-full object-cover rounded-full shadow-2xl" src="/images/2muhammadkholis.png" />
+                                <img alt="Muhammad Kholis" className="w-full h-full object-cover rounded-full shadow-2xl" src="/images/2muhammadkholis.webp" />
                             </div>
                         </div>
                     </BlurFade>
@@ -106,7 +106,7 @@ export default function Home() {
                 <motion.div className="flex-1 flex justify-center" initial={{ opacity: 0, x: -50 }} transition={{ duration: 0.6 }} whileInView={{ opacity: 1, x: 0 }}>
                     <div className="w-full h-[400px] md:h-[500px]">
                         <MagicCard className="p-5 rounded-2xl" gradientColor={resolvedTheme == "light" ? "violet" : "#e9e9e9ff"} gradientOpacity={0.1}>
-                            <img alt="Muhammad Kholis" className="w-full h-full object-cover rounded-2xl shadow-2xl" src="/images/muhammadkholis_ui_.jpg" />
+                            <img alt="Muhammad Kholis" className="w-full h-full object-cover rounded-2xl shadow-2xl" src="/images/muhammadkholis_ui_.webp" />
                         </MagicCard>
                     </div>
                 </motion.div>
@@ -338,7 +338,7 @@ function PortfolioSection() {
             title: "Parzello Website",
             desc: "Official website for Parzello digital agency.",
             link: "https://parzello.vercel.app/",
-            cover: "images/portfolio/parzelloweb.png",
+            cover: "images/portfolio/parzelloweb.webp",
             badge: "Web",
         },
         {
@@ -352,42 +352,42 @@ function PortfolioSection() {
             title: "Centrepoint",
             desc: "Community management app for POLICY organization at PNL.",
             link: "#portfolio",
-            cover: "images/portfolio/centrepoint.png",
+            cover: "images/portfolio/centrepoint.webp",
             badge: "Mobile",
         },
         {
             title: "Personal Portfolio",
             desc: "My personal portfolio website built with Next.js & TailwindCSS.",
             link: "https://mkholis-portfolio.pages.dev/",
-            cover: "images/portfolio/webportfolio.png",
+            cover: "images/portfolio/webportfolio.webp",
             badge: "Web",
         },
         {
             title: "Website UKM-POLICY",
             desc: "Official website for Polytechnic Linux Community with dynamic content and responsive design.",
             link: "https://www.ukmpolicy.com/",
-            cover: "images/portfolio/webpolicy.png",
+            cover: "images/portfolio/webpolicy.webp",
             badge: "Web",
         },
         {
             title: "E-Konsul",
             desc: "Consultation app for students and lecturers at Politeknik Negeri Lhokseumawe.",
             link: "#portfolio",
-            cover: "images/portfolio/ekonsul.png",
+            cover: "images/portfolio/ekonsul.webp",
             badge: "Mobile",
         },
         {
             title: "Emergency Center (EMTER)",
             desc: "Emergency response app with real-time chat, maps, and quick call features.",
             link: "#portfolio",
-            cover: "images/portfolio/emter.png",
+            cover: "images/portfolio/emter.webp",
             badge: "Mobile",
         },
         {
             title: "Ticzy – Productivity App",
             desc: "A daily productivity management app with To-Do, Finance, Scheduler, and Notes.",
             link: "https://play.google.com/store/apps/details?id=com.parzello.ticzy",
-            cover: "images/portfolio/ticzy.png",
+            cover: "images/portfolio/ticzy.webp",
             badge: "Mobile",
         },
     ];
@@ -534,7 +534,7 @@ function SkillDock() {
                 <ShineBorder shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]} />
 
                 <DockIcon>
-                    <img src="/icons/dart.png" alt="Dart" />
+                    <img src="/icons/dart.webp" alt="Dart" />
                 </DockIcon>
                 <Divider orientation="vertical" />
 
@@ -544,7 +544,7 @@ function SkillDock() {
                 <Divider orientation="vertical" />
 
                 <DockIcon>
-                    <img className="w-7 h-auto" src="/icons/firebase.png" alt="Firebase" />
+                    <img className="w-7 h-auto" src="/icons/firebase.webp" alt="Firebase" />
                 </DockIcon>
                 <Divider orientation="vertical" />
 
@@ -564,7 +564,7 @@ function SkillDock() {
                 <Divider orientation="vertical" />
 
                 <DockIcon>
-                    <img className="w-7 h-auto" src="/icons/php.png" alt="PHP" />
+                    <img className="w-7 h-auto" src="/icons/php.webp" alt="PHP" />
                 </DockIcon>
             </Dock>
         </div>
@@ -587,7 +587,7 @@ function SkillDock2() {
                 <Divider orientation="vertical" />
 
                 <DockIcon>
-                    <img className="w-7 h-auto" src="/icons/blender3d.png" alt="Firebase" />
+                    <img className="w-7 h-auto" src="/icons/blender3d.webp" alt="Firebase" />
                 </DockIcon>
                 <Divider orientation="vertical" />
 
@@ -597,7 +597,7 @@ function SkillDock2() {
                 <Divider orientation="vertical" />
 
                 <DockIcon>
-                    <img className="w-7 h-auto" src="/icons/androidstudio.png" alt="Next.js" />
+                    <img className="w-7 h-auto" src="/icons/androidstudio.webp" alt="Next.js" />
                 </DockIcon>
                 <Divider orientation="vertical" />
 
@@ -607,7 +607,7 @@ function SkillDock2() {
                 <Divider orientation="vertical" />
 
                 <DockIcon>
-                    <img className="w-7 h-auto" src="/icons/canva.png" alt="PHP" />
+                    <img className="w-7 h-auto" src="/icons/canva.webp" alt="PHP" />
                 </DockIcon>
             </Dock>
         </div>
