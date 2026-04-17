@@ -1,5 +1,4 @@
 import { Metadata, Viewport } from "next";
-
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Link } from "@heroui/link";
 import clsx from "clsx";
