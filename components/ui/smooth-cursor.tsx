@@ -21,12 +21,12 @@ export interface SmoothCursorProps {
 const DefaultCursorSVG: FC = () => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={50}
-      height={54}
-      viewBox="0 0 50 54"
       fill="none"
+      height={54}
       style={{ scale: 0.5 }}
+      viewBox="0 0 50 54"
+      width={50}
+      xmlns="http://www.w3.org/2000/svg"
     >
       <g filter="url(#filter0_d_91_7928)">
         <path
@@ -41,20 +41,20 @@ const DefaultCursorSVG: FC = () => {
       </g>
       <defs>
         <filter
+          colorInterpolationFilters="sRGB"
+          filterUnits="userSpaceOnUse"
+          height={52.428}
           id="filter0_d_91_7928"
+          width={49.0584}
           x={0.602397}
           y={0.952444}
-          width={49.0584}
-          height={52.428}
-          filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
         >
           <feFlood floodOpacity={0} result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
+            result="hardAlpha"
             type="matrix"
             values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-            result="hardAlpha"
           />
           <feOffset dy={2.25825} />
           <feGaussianBlur stdDeviation={2.25825} />
@@ -64,14 +64,14 @@ const DefaultCursorSVG: FC = () => {
             values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0"
           />
           <feBlend
-            mode="normal"
             in2="BackgroundImageFix"
+            mode="normal"
             result="effect1_dropShadow_91_7928"
           />
           <feBlend
-            mode="normal"
             in="SourceGraphic"
             in2="effect1_dropShadow_91_7928"
+            mode="normal"
             result="shape"
           />
         </filter>
@@ -127,6 +127,7 @@ export function SmoothCursor({
 
     const smoothMouseMove = (e: MouseEvent) => {
       const currentPos = { x: e.clientX, y: e.clientY };
+
       updateVelocity(currentPos);
 
       const speed = Math.sqrt(
@@ -142,6 +143,7 @@ export function SmoothCursor({
           90;
 
         let angleDiff = currentAngle - previousAngle.current;
+
         if (angleDiff > 180) angleDiff -= 360;
         if (angleDiff < -180) angleDiff += 360;
         accumulatedRotation.current += angleDiff;
@@ -182,6 +184,8 @@ export function SmoothCursor({
 
   return (
     <motion.div
+      animate={{ scale: 1 }}
+      initial={{ scale: 0 }}
       style={{
         position: "fixed",
         left: cursorX,
@@ -194,8 +198,6 @@ export function SmoothCursor({
         pointerEvents: "none",
         willChange: "transform",
       }}
-      initial={{ scale: 0 }}
-      animate={{ scale: 1 }}
       transition={{
         type: "spring",
         stiffness: 400,
