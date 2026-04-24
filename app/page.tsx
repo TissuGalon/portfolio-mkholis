@@ -105,7 +105,7 @@ export default function Home() {
                 {/* Foto kiri */}
                 <motion.div className="flex-1 flex justify-center" initial={{ opacity: 0, x: -50 }} transition={{ duration: 0.6 }} whileInView={{ opacity: 1, x: 0 }}>
                     <div className="w-full h-[400px] md:h-[500px]">
-                        <MagicCard className="p-5 rounded-2xl" gradientColor={resolvedTheme == "light" ? "violet" : "#e9e9e9ff"} gradientOpacity={0.1}>
+                        <MagicCard className="p-5 rounded-2xl" gradientColor="var(--magic-card-gradient)" gradientOpacity={0.1}>
                             <img alt="Muhammad Kholis" className="w-full h-full object-cover rounded-2xl shadow-2xl" src="/images/muhammadkholis_ui_.webp" />
                         </MagicCard>
                     </div>
@@ -120,7 +120,7 @@ export default function Home() {
                         </BlurFade>
                     </h1>
                     {/* Deskripsi */}
-                    <MagicCard className="p-5 rounded-2xl mt-6" gradientColor={resolvedTheme == "light" ? "violet" : "#e9e9e9ff"} gradientOpacity={0.1}>
+                    <MagicCard className="p-5 rounded-2xl mt-6" gradientColor="var(--magic-card-gradient)" gradientOpacity={0.1}>
                         <div className="text-primary text-md leading-relaxed ">
                             <TextAnimate>Saya adalah mahasiswa aktif Program Studi Teknik Informatika di Politeknik Negeri Lhokseumawe dengan minat dan keahlian di bidang pengembangan aplikasi mobile dan web. Berpengalaman dalam membangun berbagai proyek, mulai dari website organisasi hingga aplikasi produktivitas berbasis Flutter, Firebase, dan SQLite. Terbiasa bekerja dalam tim, semangat belajar tinggi, dan selalu berusaha menghasilkan karya berkualitas.</TextAnimate>
                         </div>
@@ -225,7 +225,7 @@ export default function Home() {
                             ].map((edu, i) => (
                                 <motion.div key={i} initial={{ opacity: 0, y: 40 }} transition={{ delay: i * 0.2 }} whileInView={{ opacity: 1, y: 0 }}>
                                     <Card isBlurred>
-                                        <MagicCard className="p-5 rounded-2xl" gradientColor={resolvedTheme == "light" ? "violet" : "#e9e9e9ff"} gradientOpacity={0.1}>
+                                        <MagicCard className="p-5 rounded-2xl" gradientColor="var(--magic-card-gradient)" gradientOpacity={0.1}>
                                             <h4 className="text-xl font-semibold">{edu.title}</h4>
                                             <p className="dark:text-gray-400 text-gray-600">{edu.desc}</p>
                                             <AuroraText className="font-medium">{edu.extra}</AuroraText>
@@ -266,7 +266,7 @@ export default function Home() {
                                 },
                             ].map((skill, i) => (
                                 <motion.div key={i} className="border rounded-2xl shadow-lg hover:scale-105 transition" initial={{ opacity: 0, y: 30 }} transition={{ delay: i * 0.2 }} whileInView={{ opacity: 1, y: 0 }}>
-                                    <MagicCard className="p-5 rounded-2xl" gradientColor={resolvedTheme == "light" ? "violet" : "#e9e9e9ff"} gradientOpacity={0.1}>
+                                    <MagicCard className="p-5 rounded-2xl" gradientColor="var(--magic-card-gradient)" gradientOpacity={0.1}>
                                         <AuroraText className="font-semibold text-lg mb-2">{skill.title}</AuroraText>
                                         <p className="dark:text-gray-400 text-gray-600">{skill.content}</p>
                                     </MagicCard>
@@ -475,7 +475,7 @@ function PortfolioSection() {
                             }}
                         >
                             <Card isBlurred isFooterBlurred className="rounded-2xl overflow-hidden cursor-pointer">
-                                <MagicCard className="rounded-2xl flex flex-col h-full" gradientColor={resolvedTheme == "light" ? "violet" : "#e9e9e9ff"} gradientOpacity={0.1}>
+                                <MagicCard className="rounded-2xl flex flex-col h-full" gradientColor="var(--magic-card-gradient)" gradientOpacity={0.1}>
                                     {/* Cover + Badge */}
                                     <div className="relative w-full h-40 md:h-48 lg:h-52 overflow-hidden rounded-t-2xl">
                                         <motion.img

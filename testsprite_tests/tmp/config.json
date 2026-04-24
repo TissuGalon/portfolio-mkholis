@@ -1,0 +1,16 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:3000",
+  "executionArgs": {
+    "projectName": "portfolio-mkholis",
+    "projectPath": "E:\\MY BRANDING\\Portfolio Project\\portfolio-mkholis",
+    "testIds": [],
+    "additionalInstruction": "",
+    "envs": {
+      "API_KEY": "sk-user-Alk7-zFD8vqdwHLHJIMQ7u3zDR03v6qtc1Zn2bsci02In4K_3EeqP8Cd_es0kTH5FEdWaw8PcJJk0Zih8GvbC-Pep6rcEOkZbNBs5LtZgeXh2uCM1mcN7EvoqGOY4Wnr0WA"
+    }
+  },
+  "proxy": "http://3130904b-c909-44ac-aac4-9da0a525477c:9WItwnQR7Q96YiAvKlMTk9HmqbfdDeF9@tun.testsprite.com:8080"
+}

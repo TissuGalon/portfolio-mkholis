@@ -1,0 +1,163 @@
+{
+  "meta": {
+    "project": "Personal Portfolio Website",
+    "date": "2025-10-29",
+    "prepared_by": "Software Development Manager"
+  },
+  "product_overview": "A highly interactive and visually appealing personal portfolio website showcasing skills, education, projects, and contact information with modern UI animations and responsive design.",
+  "core_goals": [
+    "Provide a clean and lightweight personal portfolio site that loads quickly and performs smoothly.",
+    "Showcase the developer's skills, education, and project portfolio with easy navigation and interactive elements.",
+    "Enable users to toggle between light and dark themes for better accessibility and personal preference.",
+    "Provide convenient access to download CV and portfolio documents.",
+    "Ensure responsiveness and accessibility across different devices and screen sizes."
+  ],
+  "key_features": [
+    "Home Page featuring hero section, about me, education, skills dock, portfolio showcase, and contact information.",
+    "Responsive Navigation Bar with menu items, search functionality, and theme toggle switch.",
+    "Portfolio Section with animated project cards supporting filtering by project type (Web/Mobile) and search capabilities.",
+    "Dark/Light Theme Switching with smooth animated toggle components.",
+    "Modal for downloading CV and Portfolio PDF documents.",
+    "Social Media Integration linking to LinkedIn, GitHub, and Instagram profiles.",
+    "Animated UI Components including gradient text, shimmer buttons, magic cards, and text animations for an engaging user experience.",
+    "Skills Dock with icons displaying programming languages and tools.",
+    "Contact Section with phone number, email, and social media buttons for easy communication.",
+    "Centralized Site Configuration for navigation and metadata management.",
+    "Root Layout with theme providers ensuring consistent styling and global navigation.",
+    "Custom Icon Components enhancing visual clarity and UI consistency."
+  ],
+  "user_flow_summary": [
+    "User lands on the Home Page and views an engaging hero section introducing the portfolio owner.",
+    "User navigates the site using the responsive Navigation Bar, easily accessing different sections like About Me, Education, Skills, Portfolio, and Contact.",
+    "User can filter and search projects in the Portfolio Section and interact with animated project cards for detail exploration.",
+    "User switches between light and dark modes using the animated theme toggle for personalized viewing.",
+    "User triggers the Document Download Modal to download CV and Portfolio files directly.",
+    "User follows social media links from various sections to connect with the portfolio owner.",
+    "User accesses Contact Section to find various means of communication including phone, email, and social links."
+  ],
+  "validation_criteria": [
+    "All major components render correctly and match design specifications on multiple devices and screen sizes.",
+    "Navigation Bar responsiveness verified including menu items, search, and theme toggle functionality.",
+    "Portfolio filtering and search work accurately and perform efficiently.",
+    "Theme toggle changes the site theme instantly with smooth animations and persists user preference.",
+    "Document Download Modal opens correctly and initiates file downloads.",
+    "Social media links point to correct external profiles and open in new tabs.",
+    "Performance metrics meet industry standards for a lightweight, fast-loading portfolio site.",
+    "Accessibility standards are met including keyboard navigation and ARIA attributes for interactive elements.",
+    "All animations run smoothly without causing UI jank or significant performance degradation."
+  ],
+  "code_summary": {
+    "tech_stack": [
+      "TypeScript",
+      "Next.js 15",
+      "React 18",
+      "Tailwind CSS",
+      "HeroUI",
+      "Framer Motion",
+      "next-themes",
+      "Lucide React",
+      "Vercel Speed Insights"
+    ],
+    "features": [
+      {
+        "name": "Home Page",
+        "description": "Main landing page with hero section, about me, education, skills, portfolio, and contact sections",
+        "files": [
+          "app/page.tsx"
+        ]
+      },
+      {
+        "name": "Navigation Bar",
+        "description": "Responsive navigation bar with menu items, search functionality, and theme toggle",
+        "files": [
+          "components/navbar.tsx"
+        ]
+      },
+      {
+        "name": "Portfolio Section",
+        "description": "Interactive portfolio showcase with filtering by project type (Web/Mobile), search functionality, and animated project cards",
+        "files": [
+          "app/page.tsx"
+        ]
+      },
+      {
+        "name": "Theme Switching",
+        "description": "Dark/Light theme toggle functionality with animated theme switcher component",
+        "files": [
+          "components/theme-switch.tsx",
+          "components/magicui/animated-theme-toggler.tsx",
+          "app/providers.tsx"
+        ]
+      },
+      {
+        "name": "Document Download Modal",
+        "description": "Modal component for downloading CV and Portfolio PDF documents",
+        "files": [
+          "app/page.tsx"
+        ]
+      },
+      {
+        "name": "Social Media Links",
+        "description": "Social media integration with links to LinkedIn, GitHub, and Instagram",
+        "files": [
+          "app/page.tsx",
+          "components/navbar.tsx"
+        ]
+      },
+      {
+        "name": "Animated UI Components",
+        "description": "Collection of animated UI components including gradient text, border beam, shimmer buttons, magic cards, and text animations",
+        "files": [
+          "components/magicui/animated-gradient-text.tsx",
+          "components/magicui/aurora-text.tsx",
+          "components/magicui/border-beam.tsx",
+          "components/magicui/blur-fade.tsx",
+          "components/magicui/dock.tsx",
+          "components/magicui/magic-card.tsx",
+          "components/magicui/rainbow-button.tsx",
+          "components/magicui/shimmer-button.tsx",
+          "components/magicui/shine-border.tsx",
+          "components/magicui/shiny-button.tsx",
+          "components/magicui/text-animate.tsx",
+          "components/magicui/ripple.tsx"
+        ]
+      },
+      {
+        "name": "Skills Dock",
+        "description": "Animated dock component displaying programming languages and tools skills with icons",
+        "files": [
+          "app/page.tsx"
+        ]
+      },
+      {
+        "name": "Contact Section",
+        "description": "Contact section with phone number, email, and social media buttons",
+        "files": [
+          "app/page.tsx"
+        ]
+      },
+      {
+        "name": "Site Configuration",
+        "description": "Centralized site configuration including navigation items, metadata, and links",
+        "files": [
+          "config/site.ts"
+        ]
+      },
+      {
+        "name": "Layout and Providers",
+        "description": "Root layout component with theme providers and global navigation",
+        "files": [
+          "app/layout.tsx",
+          "app/providers.tsx"
+        ]
+      },
+      {
+        "name": "Icons",
+        "description": "Custom icon components for social media, theme toggle, and UI elements",
+        "files": [
+          "components/icons.tsx"
+        ]
+      }
+    ]
+  }
+}

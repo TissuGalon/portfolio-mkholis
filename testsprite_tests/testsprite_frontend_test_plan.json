@@ -1,0 +1,446 @@
+[
+  {
+    "id": "TC001",
+    "title": "Home Page Rendering and Content Verification",
+    "description": "Verify that the Home Page loads correctly with hero section, about me, education, skills dock, portfolio showcase, and contact information displayed as per design.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the Home Page URL."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify hero section is visible with correct text and styles."
+      },
+      {
+        "type": "assertion",
+        "description": "Check 'About Me' section renders with correct content."
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm 'Education' section displays correct entries."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify Skills Dock shows correct icons and animations."
+      },
+      {
+        "type": "assertion",
+        "description": "Ensure Portfolio section displays project cards."
+      },
+      {
+        "type": "assertion",
+        "description": "Check Contact Section shows phone, email, and social media buttons."
+      },
+      {
+        "type": "assertion",
+        "description": "Validate that all sections conform to responsive design on desktop, tablet, and mobile screens."
+      }
+    ]
+  },
+  {
+    "id": "TC002",
+    "title": "Navigation Bar Responsiveness and Functionality",
+    "description": "Verify the Navigation Bar adapts correctly across devices, menu items function, search works, and theme toggle can switch themes.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Load the site on desktop viewport."
+      },
+      {
+        "type": "assertion",
+        "description": "Check navigation menu items are visible and correctly labeled."
+      },
+      {
+        "type": "action",
+        "description": "Resize viewport to mobile size."
+      },
+      {
+        "type": "assertion",
+        "description": "Ensure navigation transforms to mobile menu (e.g., hamburger menu)."
+      },
+      {
+        "type": "action",
+        "description": "Open mobile menu and verify menu items accessibility."
+      },
+      {
+        "type": "action",
+        "description": "Use search input to enter a valid query."
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm search filters projects or site content accurately."
+      },
+      {
+        "type": "action",
+        "description": "Toggle theme switch once."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify theme changes from light to dark with smooth animation."
+      },
+      {
+        "type": "action",
+        "description": "Page reload to verify theme preference is persisted."
+      },
+      {
+        "type": "assertion",
+        "description": "Ensure switched theme is applied after reload."
+      }
+    ]
+  },
+  {
+    "id": "TC003",
+    "title": "Portfolio Section Filtering and Search",
+    "description": "Check correct functionality of filtering by project type and searching projects with valid and invalid inputs.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to Portfolio section."
+      },
+      {
+        "type": "action",
+        "description": "Filter projects by type 'Web'."
+      },
+      {
+        "type": "assertion",
+        "description": "Only web projects are displayed with correct animations."
+      },
+      {
+        "type": "action",
+        "description": "Filter projects by type 'Mobile'."
+      },
+      {
+        "type": "assertion",
+        "description": "Only mobile projects are shown."
+      },
+      {
+        "type": "action",
+        "description": "Enter a valid search keyword in portfolio search."
+      },
+      {
+        "type": "assertion",
+        "description": "Projects matching search keyword are displayed."
+      },
+      {
+        "type": "action",
+        "description": "Enter an invalid or random search keyword."
+      },
+      {
+        "type": "assertion",
+        "description": "No projects displayed and user-friendly empty state is shown."
+      },
+      {
+        "type": "action",
+        "description": "Clear filters and search input."
+      },
+      {
+        "type": "assertion",
+        "description": "All projects are displayed again without animation glitches."
+      }
+    ]
+  },
+  {
+    "id": "TC004",
+    "title": "Theme Toggling with Animation and Persistence",
+    "description": "Verify theme toggle component changes themes with smooth animation and saves preference across sessions.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "On Home Page, locate theme toggle switch."
+      },
+      {
+        "type": "action",
+        "description": "Toggle theme from light to dark."
+      },
+      {
+        "type": "assertion",
+        "description": "Theme switches with visible smooth animation and colors update accordingly."
+      },
+      {
+        "type": "action",
+        "description": "Toggle theme back to light."
+      },
+      {
+        "type": "assertion",
+        "description": "Animation plays and light theme is restored."
+      },
+      {
+        "type": "action",
+        "description": "Reload the page."
+      },
+      {
+        "type": "assertion",
+        "description": "Previously selected theme is persisted and applied automatically."
+      }
+    ]
+  },
+  {
+    "id": "TC005",
+    "title": "Document Download Modal Functionality",
+    "description": "Verify that the modal for downloading CV and Portfolio documents opens correctly, and file downloads initiate properly.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Trigger the Document Download Modal via designated button or link."
+      },
+      {
+        "type": "assertion",
+        "description": "Modal appears with options for CV and Portfolio PDF documents."
+      },
+      {
+        "type": "action",
+        "description": "Click to download CV document."
+      },
+      {
+        "type": "assertion",
+        "description": "PDF download initiates and file integrity is verified."
+      },
+      {
+        "type": "action",
+        "description": "Click to download Portfolio document."
+      },
+      {
+        "type": "assertion",
+        "description": "Portfolio PDF downloads successfully."
+      },
+      {
+        "type": "action",
+        "description": "Close the modal."
+      },
+      {
+        "type": "assertion",
+        "description": "Modal closes without UI glitches."
+      }
+    ]
+  },
+  {
+    "id": "TC006",
+    "title": "Social Media Links Verification",
+    "description": "Ensure social media buttons and links navigate to correct external profiles and open in new tabs.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Locate LinkedIn, GitHub, and Instagram links in navigation and contact sections."
+      },
+      {
+        "type": "action",
+        "description": "Click each social media link."
+      },
+      {
+        "type": "assertion",
+        "description": "Each link opens the corresponding profile in a new browser tab."
+      },
+      {
+        "type": "assertion",
+        "description": "Link URLs exactly match specified project profiles."
+      }
+    ]
+  },
+  {
+    "id": "TC007",
+    "title": "Animated UI Components Rendering and Behavior",
+    "description": "Validate that animated UI components such as gradient text, shimmer buttons, magic cards, text animations, and border beams render correctly and run smoothly without UI jank.",
+    "category": "ui",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Visit pages or sections containing animated UI components."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify gradient text animation appears and transitions as expected."
+      },
+      {
+        "type": "assertion",
+        "description": "Ensure shimmer buttons blink/shimmer correctly on hover or load."
+      },
+      {
+        "type": "assertion",
+        "description": "Check magic cards respond interactively and animate according to user actions."
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm border beam and text-animate components run their animations smoothly without frame drop."
+      },
+      {
+        "type": "assertion",
+        "description": "No animation causes UI elements to freeze or lag."
+      }
+    ]
+  },
+  {
+    "id": "TC008",
+    "title": "Skills Dock Display and Responsiveness",
+    "description": "Verify that the animated Skills Dock correctly displays all programming language and tool icons with correct animations and responsive layout.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to Skills Dock section on Home Page."
+      },
+      {
+        "type": "assertion",
+        "description": "All expected skill icons are displayed with proper labels or tooltips."
+      },
+      {
+        "type": "assertion",
+        "description": "Animations like icon scaling or hover effects function correctly."
+      },
+      {
+        "type": "assertion",
+        "description": "Skills Dock layout adjusts gracefully on different screen sizes."
+      }
+    ]
+  },
+  {
+    "id": "TC009",
+    "title": "Contact Section Accessibility and Functionality",
+    "description": "Test that the Contact Section displays contact info clearly and all communication buttons (phone, email, social media) work as intended.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to Contact Section."
+      },
+      {
+        "type": "assertion",
+        "description": "Phone number and email are clearly displayed and selectable."
+      },
+      {
+        "type": "action",
+        "description": "Click phone contact button on mobile device."
+      },
+      {
+        "type": "assertion",
+        "description": "Device initiates call action with correct number."
+      },
+      {
+        "type": "action",
+        "description": "Click email button."
+      },
+      {
+        "type": "assertion",
+        "description": "Default email client opens with recipient address pre-filled."
+      },
+      {
+        "type": "action",
+        "description": "Click social media contact buttons."
+      },
+      {
+        "type": "assertion",
+        "description": "Each opens respective profile in new tab/window."
+      }
+    ]
+  },
+  {
+    "id": "TC010",
+    "title": "Accessibility Compliance Testing",
+    "description": "Verify that the website meets accessibility standards including keyboard navigation, screen reader usability, and appropriate ARIA attributes on interactive elements.",
+    "category": "security",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate through the site using keyboard only (tab, shift+tab, enter)."
+      },
+      {
+        "type": "assertion",
+        "description": "All interactive elements receive focus in a logical order."
+      },
+      {
+        "type": "assertion",
+        "description": "Theme toggle, modal dialogs, navigation menus and buttons are operable via keyboard."
+      },
+      {
+        "type": "action",
+        "description": "Use a screen reader to navigate key sections."
+      },
+      {
+        "type": "assertion",
+        "description": "Screen reader reads descriptive labels, including ARIA attributes on buttons, links, and form elements."
+      },
+      {
+        "type": "assertion",
+        "description": "No keyboard traps or inaccessible controls encountered."
+      }
+    ]
+  },
+  {
+    "id": "TC011",
+    "title": "Performance and Load Speed Testing",
+    "description": "Ensure that the portfolio website loads quickly and performs smoothly on various devices meeting performance benchmarks.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Load the site on desktop, mobile, and tablet devices."
+      },
+      {
+        "type": "assertion",
+        "description": "Page load times are within industry standard targets (e.g., under 3 seconds on 3G simulations)."
+      },
+      {
+        "type": "assertion",
+        "description": "Animations and UI interactions run without lag or dropped frames."
+      },
+      {
+        "type": "action",
+        "description": "Use Vercel Speed Insights or similar tools to measure and report performance metrics."
+      },
+      {
+        "type": "assertion",
+        "description": "All performance scores meet or exceed baseline requirements."
+      }
+    ]
+  },
+  {
+    "id": "TC012",
+    "title": "Error Handling for Missing or Invalid Data",
+    "description": "Test the application behavior when data such as projects, skills, or configuration entries are missing or malformed.",
+    "category": "error handling",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Simulate missing project data or empty project list."
+      },
+      {
+        "type": "assertion",
+        "description": "Portfolio section shows a user-friendly message indicating no projects available."
+      },
+      {
+        "type": "action",
+        "description": "Simulate malformed or missing skill icons data."
+      },
+      {
+        "type": "assertion",
+        "description": "Skills Dock gracefully degrades with placeholders or empty state message without crashing."
+      },
+      {
+        "type": "action",
+        "description": "Modify site configuration with missing navigation items."
+      },
+      {
+        "type": "assertion",
+        "description": "Navigation bar handles missing items without rendering errors."
+      }
+    ]
+  }
+]

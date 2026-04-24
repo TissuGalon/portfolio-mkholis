@@ -1,0 +1,115 @@
+{
+  "tech_stack": [
+    "TypeScript",
+    "Next.js 15",
+    "React 18",
+    "Tailwind CSS",
+    "HeroUI",
+    "Framer Motion",
+    "next-themes",
+    "Lucide React",
+    "Vercel Speed Insights"
+  ],
+  "features": [
+    {
+      "name": "Home Page",
+      "description": "Main landing page with hero section, about me, education, skills, portfolio, and contact sections",
+      "files": [
+        "app/page.tsx"
+      ]
+    },
+    {
+      "name": "Navigation Bar",
+      "description": "Responsive navigation bar with menu items, search functionality, and theme toggle",
+      "files": [
+        "components/navbar.tsx"
+      ]
+    },
+    {
+      "name": "Portfolio Section",
+      "description": "Interactive portfolio showcase with filtering by project type (Web/Mobile), search functionality, and animated project cards",
+      "files": [
+        "app/page.tsx"
+      ]
+    },
+    {
+      "name": "Theme Switching",
+      "description": "Dark/Light theme toggle functionality with animated theme switcher component",
+      "files": [
+        "components/theme-switch.tsx",
+        "components/magicui/animated-theme-toggler.tsx",
+        "app/providers.tsx"
+      ]
+    },
+    {
+      "name": "Document Download Modal",
+      "description": "Modal component for downloading CV and Portfolio PDF documents",
+      "files": [
+        "app/page.tsx"
+      ]
+    },
+    {
+      "name": "Social Media Links",
+      "description": "Social media integration with links to LinkedIn, GitHub, and Instagram",
+      "files": [
+        "app/page.tsx",
+        "components/navbar.tsx"
+      ]
+    },
+    {
+      "name": "Animated UI Components",
+      "description": "Collection of animated UI components including gradient text, border beam, shimmer buttons, magic cards, and text animations",
+      "files": [
+        "components/magicui/animated-gradient-text.tsx",
+        "components/magicui/aurora-text.tsx",
+        "components/magicui/border-beam.tsx",
+        "components/magicui/blur-fade.tsx",
+        "components/magicui/dock.tsx",
+        "components/magicui/magic-card.tsx",
+        "components/magicui/rainbow-button.tsx",
+        "components/magicui/shimmer-button.tsx",
+        "components/magicui/shine-border.tsx",
+        "components/magicui/shiny-button.tsx",
+        "components/magicui/text-animate.tsx",
+        "components/magicui/ripple.tsx"
+      ]
+    },
+    {
+      "name": "Skills Dock",
+      "description": "Animated dock component displaying programming languages and tools skills with icons",
+      "files": [
+        "app/page.tsx"
+      ]
+    },
+    {
+      "name": "Contact Section",
+      "description": "Contact section with phone number, email, and social media buttons",
+      "files": [
+        "app/page.tsx"
+      ]
+    },
+    {
+      "name": "Site Configuration",
+      "description": "Centralized site configuration including navigation items, metadata, and links",
+      "files": [
+        "config/site.ts"
+      ]
+    },
+    {
+      "name": "Layout and Providers",
+      "description": "Root layout component with theme providers and global navigation",
+      "files": [
+        "app/layout.tsx",
+        "app/providers.tsx"
+      ]
+    },
+    {
+      "name": "Icons",
+      "description": "Custom icon components for social media, theme toggle, and UI elements",
+      "files": [
+        "components/icons.tsx"
+      ]
+    }
+  ]
+}
+
