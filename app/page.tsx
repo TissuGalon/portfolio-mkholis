@@ -8,7 +8,14 @@ import { Button, Card, CardHeader, CardBody, CardFooter, Modal, ModalContent, Mo
 import { Divider } from "@heroui/divider";
 
 // === MagicUI ===
-import { Github, Instagram, Linkedin, Mail, Phone } from "lucide-react";
+import { Github, Instagram, Linkedin, Mail, Phone, User, Camera, MapPin, Code2 } from "lucide-react";
+
+import {
+  ScrollVelocityContainer,
+  ScrollVelocityRow,
+} from "@/components/ui/scroll-based-velocity"
+
+import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
 
 import { Ripple } from "@/components/magicui/ripple";
 import { RainbowButton } from "@/components/magicui/rainbow-button";
@@ -92,105 +99,79 @@ export default function Home() {
                 <div className="absolute inset-0 bg-primary opacity-5 backdrop-blur-md" />
 
                 {/* Running Text */}
-                <motion.div animate={{ x: ["0%", "-100%"] }} className="flex whitespace-nowrap relative" transition={{ repeat: Infinity, duration: 20, ease: "linear" }}>
+             {/*    <motion.div animate={{ x: ["0%", "-100%"] }} className="flex whitespace-nowrap relative" transition={{ repeat: Infinity, duration: 20, ease: "linear" }}>
                     <p className="text-1xl font-bold bg-background bg-clip-text text-primary px-8">🚀 Flutter · 💻 Web Development · 📱 Mobile Apps · 🎨 UI/UX Design · 🔥 Firebase · ⚡ Next.js · 🛠️ Productivity</p>
                     <p className="text-1xl font-bold bg-background bg-clip-text text-primary px-8">🚀 Flutter · 💻 Web Development · 📱 Mobile Apps · 🎨 UI/UX Design · 🔥 Firebase · ⚡ Next.js · 🛠️ Productivity</p>
                     <p className="text-1xl font-bold bg-background bg-clip-text text-primary px-8">🚀 Flutter · 💻 Web Development · 📱 Mobile Apps · 🎨 UI/UX Design · 🔥 Firebase · ⚡ Next.js · 🛠️ Productivity</p>
-                </motion.div>
+                </motion.div> */}
+
+                <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
+      <ScrollVelocityContainer className="text-4xl font-bold tracking-[-0.02em] md:text-7xl md:leading-20">
+        <ScrollVelocityRow baseVelocity={20} direction={1}>
+          Velocity Scroll
+        </ScrollVelocityRow>
+        <ScrollVelocityRow baseVelocity={20} direction={-1}>
+          Velocity Scroll
+        </ScrollVelocityRow>
+      </ScrollVelocityContainer>
+      <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r"></div>
+      <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l"></div>
+    </div>
             </section>
             <br />
             <br />
             {/* === ABOUT === */}
-            <section className="max-w-6xl mx-auto px-6 py-5 flex flex-col md:flex-row items-center gap-12" id="about">
-                {/* Foto kiri */}
-                <motion.div className="flex-1 flex justify-center" initial={{ opacity: 0, x: -50 }} transition={{ duration: 0.6 }} whileInView={{ opacity: 1, x: 0 }}>
-                    <div className="w-full h-[400px] md:h-[500px]">
-                        <MagicCard className="p-5 rounded-2xl" gradientColor="var(--magic-card-gradient)" gradientOpacity={0.1}>
-                            <img alt="Muhammad Kholis" className="w-full h-full object-cover rounded-2xl shadow-2xl" src="/images/muhammadkholis_ui_.webp" />
-                        </MagicCard>
+            {/* === ABOUT === */}
+            <section className="max-w-6xl mx-auto px-6 py-20 flex flex-col lg:flex-row items-center lg:items-start gap-12" id="about">
+                {/* Images Grid Section (Same on Mobile/Desktop) */}
+                <div className="flex-1 w-full max-w-[500px] lg:max-w-none">
+                    <div className="grid grid-cols-2 gap-4">
+                        <motion.div 
+                            className="rounded-2xl overflow-hidden border shadow-sm group bg-background"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <img alt="The Developer" className="w-full h-auto aspect-[4/5] object-cover grayscale hover:grayscale-0 transition-all duration-500 group-hover:scale-105" src="/images/muhammadkholis_ui_.webp" />
+                        </motion.div>
+                        <motion.div 
+                            className="rounded-2xl overflow-hidden border shadow-sm group bg-background"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.1 }}
+                        >
+                            <img alt="The Creative" className="w-full h-auto aspect-[4/5] object-cover grayscale hover:grayscale-0 transition-all duration-500 group-hover:scale-105" src="/images/muhammadkholis_about_2.png" />
+                        </motion.div>
                     </div>
-                </motion.div>
+                </div>
 
                 {/* Teks kanan */}
-                <motion.div className="flex-1 text-center md:text-left" initial={{ opacity: 0, x: 50 }} transition={{ duration: 0.6 }} whileInView={{ opacity: 1, x: 0 }}>
+                <motion.div className="flex-1 text-center lg:text-left" initial={{ opacity: 0, x: 20 }} transition={{ duration: 0.6, delay: 0.2 }} whileInView={{ opacity: 1, x: 0 }}>
                     {/* Judul */}
-                    <h1 className="text-7xl font-bold tracking-tighter md:text-5xl lg:text-8xl">
-                        <BlurFade delay={0.3} inView>
-                            <AnimatedGradientText>ABOUT ME</AnimatedGradientText>
-                        </BlurFade>
-                    </h1>
+                    <div className="mb-8 group">
+                        <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-black dark:text-white">
+                            About Me
+                        </h2>
+                        <div className="h-1.5 w-16 bg-black dark:bg-white mt-3 rounded-full group-hover:w-24 transition-all duration-500 origin-left" />
+                    </div>
+
                     {/* Deskripsi */}
-                    <MagicCard className="p-5 rounded-2xl mt-6" gradientColor="var(--magic-card-gradient)" gradientOpacity={0.1}>
-                        <div className="text-primary text-md leading-relaxed ">
-                            <TextAnimate>Saya adalah mahasiswa aktif Program Studi Teknik Informatika di Politeknik Negeri Lhokseumawe dengan minat dan keahlian di bidang pengembangan aplikasi mobile dan web. Berpengalaman dalam membangun berbagai proyek, mulai dari website organisasi hingga aplikasi produktivitas berbasis Flutter, Firebase, dan SQLite. Terbiasa bekerja dalam tim, semangat belajar tinggi, dan selalu berusaha menghasilkan karya berkualitas.</TextAnimate>
+                    <div className="space-y-6 text-lg md:text-xl text-primary/80 leading-relaxed">
+                        <p>
+                            Saya adalah mahasiswa aktif <span className="font-bold text-black dark:text-white underline decoration-black/20 dark:decoration-white/20 underline-offset-4">Teknik Informatika</span> di Politeknik Negeri Lhokseumawe dengan fokus pada pengembangan aplikasi mobile dan web yang inovatif.
+                        </p>
+                        <p>
+                            Berpengalaman dalam membangun solusi digital menggunakan <span className="font-bold text-black dark:text-white underline decoration-black/20 dark:decoration-white/20 underline-offset-4">Flutter, Next.js, dan Firebase</span>. Saya memiliki passion dalam menciptakan antarmuka yang indah dan pengalaman pengguna yang mulus.
+                        </p>
+                    </div>
+
+                    <div className="mt-12 space-y-6">
+                        <div className="flex items-center gap-3 justify-center lg:justify-start">
+                            <span className="text-[10px] font-black tracking-[0.3em] text-gray-400 uppercase">Technologies & Tools</span>
+                            <div className="h-[1px] w-8 bg-gray-200 dark:bg-gray-800" />
                         </div>
-                    </MagicCard>
-                    <div className="my-4" />
-                    <SkillDock />
-                    <div className="my-4" />
-                    <SkillDock2 />
-                    {/* Skill Bars */}
-                    {/*  <div className="mt-10 space-y-6 max-w-md">
-                        <Progress
-                            classNames={{
-                                base: "w-full",
-                                track: "drop-shadow-md border border-default",
-                                indicator: "bg-linear-to-r from-pink-500 to-yellow-500",
-                                label: "tracking-wider font-medium text-primary",
-                                value: "text-foreground/60",
-                            }}
-                            label="Flutter"
-                            radius="sm"
-                            showValueLabel={true}
-                            size="sm"
-                            value={85}
-                        />
-
-                        <Progress
-                            classNames={{
-                                base: "w-full",
-                                track: "drop-shadow-md border border-default",
-                                indicator: "bg-linear-to-r from-violet-500 to-indigo-500",
-                                label: "tracking-wider font-medium text-primary",
-                                value: "text-foreground/60",
-                            }}
-                            label="Web Development"
-                            radius="sm"
-                            showValueLabel={true}
-                            size="sm"
-                            value={80}
-                        />
-
-                        <Progress
-                            classNames={{
-                                base: "w-full",
-                                track: "drop-shadow-md border border-default",
-                                indicator: "bg-linear-to-r from-green-400 to-emerald-600",
-                                label: "tracking-wider font-medium text-primary",
-                                value: "text-foreground/60",
-                            }}
-                            label="Firebase"
-                            radius="sm"
-                            showValueLabel={true}
-                            size="sm"
-                            value={70}
-                        />
-
-                        <Progress
-                            classNames={{
-                                base: "w-full",
-                                track: "drop-shadow-md border border-default",
-                                indicator: "bg-linear-to-r from-cyan-400 to-blue-500",
-                                label: "tracking-wider font-medium text-primary",
-                                value: "text-foreground/60",
-                            }}
-                            label="UI/UX Design"
-                            radius="sm"
-                            showValueLabel={true}
-                            size="sm"
-                            value={65}
-                        />
-                    </div> */}
+                        <TechStack />
+                    </div>
                 </motion.div>
             </section>
             <Divider className="my-10" />
@@ -527,92 +508,63 @@ function PortfolioSection() {
     );
 }
 
-function SkillDock() {
+function TechStack() {
+    const skills = [
+        { name: "Flutter", icon: "/icons/flutter.png" },
+        { name: "Next.js", icon: "/icons/nextjs.svg" },
+        { name: "Firebase", icon: "/icons/firebase.webp" },
+        { name: "React", icon: "/icons/react.png" },
+        { name: "Dart", icon: "/icons/dart.webp" },
+        { name: "Tailwind", icon: "/icons/tailwind.png" },
+        { name: "PHP", icon: "/icons/php.webp" },
+    ];
+
+    const tools = [
+        { name: "Figma", icon: "/icons/figma.svg" },
+        { name: "Photoshop", icon: "/icons/photoshop.png" },
+        { name: "Premiere Pro", icon: "/icons/premierepro.png" },
+        { name: "Blender", icon: "/icons/blender3d.webp" },
+        { name: "Android Studio", icon: "/icons/androidstudio.webp" },
+        { name: "Canva", icon: "/icons/canva.webp" },
+    ];
+
     return (
-        <div className="relative">
-            <Dock className="mt-0" direction="middle">
-                <ShineBorder shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]} />
+        <div className="space-y-8">
+            {/* Primary Skills */}
+            <div className="flex flex-wrap gap-6 justify-center lg:justify-start">
+                {skills.map((s) => (
+                    <div key={s.name} className="group relative flex items-center justify-center">
+                        <img 
+                            src={s.icon} 
+                            alt={s.name} 
+                            className="w-10 h-10 object-contain transition-all duration-500 hover:scale-110 drop-shadow-sm"
+                        />
+                        <div className="absolute -top-10 scale-0 group-hover:scale-100 transition-transform duration-200 px-3 py-1 bg-black text-white text-[10px] font-bold rounded-lg shadow-xl pointer-events-none z-50">
+                            {s.name}
+                        </div>
+                    </div>
+                ))}
+            </div>
 
-                <DockIcon>
-                    <img src="/icons/dart.webp" alt="Dart" />
-                </DockIcon>
-                <Divider orientation="vertical" />
-
-                <DockIcon>
-                    <img className="w-7 h-auto" src="/icons/flutter.png" alt="Flutter" />
-                </DockIcon>
-                <Divider orientation="vertical" />
-
-                <DockIcon>
-                    <img className="w-7 h-auto" src="/icons/firebase.webp" alt="Firebase" />
-                </DockIcon>
-                <Divider orientation="vertical" />
-
-                <DockIcon>
-                    <img className="w-7 h-auto" src="/icons/react.png" alt="React" />
-                </DockIcon>
-                <Divider orientation="vertical" />
-
-                <DockIcon>
-                    <img className="w-7 h-auto" src="/icons/nextjs.svg" alt="Next.js" />
-                </DockIcon>
-                <Divider orientation="vertical" />
-
-                <DockIcon>
-                    <img className="w-7 h-auto" src="/icons/tailwind.png" alt="TailwindCSS" />
-                </DockIcon>
-                <Divider orientation="vertical" />
-
-                <DockIcon>
-                    <img className="w-7 h-auto" src="/icons/php.webp" alt="PHP" />
-                </DockIcon>
-            </Dock>
+            {/* Tools */}
+            <div className="flex flex-wrap gap-5 justify-center lg:justify-start">
+                {tools.map((t) => (
+                    <div key={t.name} className="group relative flex items-center justify-center">
+                        <img 
+                            src={t.icon} 
+                            alt={t.name} 
+                            className="w-7 h-7 object-contain transition-all duration-500 hover:scale-110 drop-shadow-sm"
+                        />
+                        <div className="absolute -top-10 scale-0 group-hover:scale-100 transition-transform duration-200 px-3 py-1 bg-black text-white text-[10px] font-bold rounded-lg shadow-xl pointer-events-none z-50">
+                            {t.name}
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
-function SkillDock2() {
-    return (
-        <div className="relative">
-            <Dock className="mt-0" direction="middle">
-                <ShineBorder shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]} />
 
-                <DockIcon>
-                    <img className="w-7 h-auto" src="/icons/photoshop.png" alt="Dart" />
-                </DockIcon>
-                <Divider orientation="vertical" />
-
-                <DockIcon>
-                    <img className="w-7 h-auto" src="/icons/premierepro.png" alt="Flutter" />
-                </DockIcon>
-                <Divider orientation="vertical" />
-
-                <DockIcon>
-                    <img className="w-7 h-auto" src="/icons/blender3d.webp" alt="Firebase" />
-                </DockIcon>
-                <Divider orientation="vertical" />
-
-                <DockIcon>
-                    <img className="w-7 h-auto" src="/icons/figma.svg" alt="React" />
-                </DockIcon>
-                <Divider orientation="vertical" />
-
-                <DockIcon>
-                    <img className="w-7 h-auto" src="/icons/androidstudio.webp" alt="Next.js" />
-                </DockIcon>
-                <Divider orientation="vertical" />
-
-                <DockIcon>
-                    <img className="w-7 h-auto" src="/icons/msoffice.png" alt="TailwindCSS" />
-                </DockIcon>
-                <Divider orientation="vertical" />
-
-                <DockIcon>
-                    <img className="w-7 h-auto" src="/icons/canva.webp" alt="PHP" />
-                </DockIcon>
-            </Dock>
-        </div>
-    );
-}
 
 function SosmedDock() {
     return (
