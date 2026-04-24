@@ -8,7 +8,7 @@ import { Button, Card, CardHeader, CardBody, CardFooter, Modal, ModalContent, Mo
 import { Divider } from "@heroui/divider";
 
 // === MagicUI ===
-import { Github, Instagram, Linkedin, Mail, Phone, User, Camera, MapPin, Code2 } from "lucide-react";
+import { Github, Instagram, Linkedin, Mail, Phone, User, Camera, MapPin, Code2, ArrowUpRight, Search } from "lucide-react";
 
 import {
   ScrollVelocityContainer,
@@ -411,124 +411,126 @@ function PortfolioSection() {
     });
 
     return (
-        <section className="max-w-6xl mx-auto px-6 pb-20 pt-5" id="portfolio">
-            <h2 className="text-center text-7xl font-bold tracking-tighter md:text-5xl lg:text-8xl">
-                <AnimatedGradientText>PORTFOLIO</AnimatedGradientText>
-            </h2>
-            <br />
-            <br />
+        <section className="max-w-6xl mx-auto px-6 py-20" id="portfolio">
+            {/* Header matching About Me / Education style */}
+            <motion.div 
+                className="mb-16 group text-center lg:text-left"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+            >
+                <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-black dark:text-white uppercase">
+                    Portfolio
+                </h2>
+                <div className="h-1.5 w-16 bg-black dark:bg-white mt-3 rounded-full group-hover:w-24 transition-all duration-500 origin-left mx-auto lg:mx-0" />
+            </motion.div>
 
-            {/* Wrapper Chips + Search Bar */}
-            <Card className="mb-4 bg-background  shadow-none border" isBlurred>
-                <CardBody>
-                    <div className="flex justify-between items-center flex-wrap gap-4 ">
-                        {/* Search Bar */}
-                        <div className="flex-1 min-w-[200px] relative">
-                            <Input
-                                classNames={{
-                                    inputWrapper: "border border-gray-300 dark:border-gray-600 focus-within:border-violet-500 dark:focus-within:border-violet-400 transition-colors",
-                                    input: "text-gray-800 dark:text-gray-200 placeholder:text-gray-400 dark:placeholder:text-gray-500",
-                                }}
-                                type="text"
-                                placeholder="Search projects..."
-                                value={search}
-                                onChange={(e) => setSearch(e.target.value)}
-                                variant="bordered"
-                                radius="lg"
-                                color="primary"
-                            />
-
-                            {/* Clear Button (X) */}
-                            {search && (
-                                <button className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-violet-600 hover:cursor-pointer transition-colors" type="button" onClick={() => setSearch("")}>
-                                    ✕
-                                </button>
-                            )}
-                        </div>
-
-                        {/* Filter Chips */}
-                        <div className="flex gap-3 flex-wrap">
-                            {badges.map((b) => (
-                                <Chip className={filter === b ? "cursor-pointer transition-all duration-300 " : "cursor-pointer transition-all duration-300  border border-gray-300 dark:border-gray-600"} key={b} variant={filter === b ? "flat" : "dot"} color="warning" size="lg" onClick={() => setFilter(b)}>
-                                    {b}
-                                </Chip>
-                            ))}
-                        </div>
+            {/* minimalist Search & Filter */}
+            <div className="mb-12 space-y-8">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                    {/* Search Input */}
+                    <div className="relative w-full md:w-96 group">
+                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-black dark:group-focus-within:text-white transition-colors" />
+                        <input
+                            type="text"
+                            placeholder="Search projects..."
+                            value={search}
+                            onChange={(e) => setSearch(e.target.value)}
+                            className="w-full pl-11 pr-10 py-3 bg-black/5 dark:bg-white/5 border border-transparent focus:border-black/10 dark:focus:border-white/10 rounded-xl outline-none transition-all text-sm font-medium"
+                        />
+                        {search && (
+                            <button 
+                                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-black dark:hover:text-white transition-colors" 
+                                onClick={() => setSearch("")}
+                            >
+                                ✕
+                            </button>
+                        )}
                     </div>
-                </CardBody>
-            </Card>
 
-            {/* Total Projects */}
-            <Card isBlurred className="mb-4 bg-background  shadow-none border">
-                <CardBody className="p-2">
-                    <p className="text-md  ">
-                        Showing <span className="font-semibold">{filteredProjects.length}</span> {filteredProjects.length === 1 ? "project" : "projects"}
-                    </p>
-                </CardBody>
-            </Card>
-            <Divider className="my-3" />
+                    {/* Filter Chips */}
+                    <div className="flex gap-2 flex-wrap">
+                        {badges.map((b) => (
+                            <button
+                                key={b}
+                                onClick={() => setFilter(b)}
+                                className={`px-5 py-2 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-300 border ${
+                                    filter === b 
+                                    ? "bg-black text-white border-black dark:bg-white dark:text-black dark:border-white" 
+                                    : "bg-transparent text-gray-400 border-gray-200 dark:border-gray-800 hover:border-gray-400"
+                                }`}
+                            >
+                                {b}
+                            </button>
+                        ))}
+                    </div>
+                </div>
 
-            {/* Projects Grid with AnimatePresence */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <AnimatePresence>
+                <div className="flex items-center gap-3">
+                    <span className="text-[10px] font-black tracking-[0.3em] text-gray-400 uppercase">
+                        Showing {filteredProjects.length} {filteredProjects.length === 1 ? "Result" : "Results"}
+                    </span>
+                    <div className="h-[1px] flex-1 bg-gray-100 dark:bg-gray-900" />
+                </div>
+            </div>
+
+            {/* Projects Grid */}
+            <div className="grid md:grid-cols-2 gap-12">
+                <AnimatePresence mode="popLayout">
                     {filteredProjects.map((project, i) => (
                         <motion.div
                             key={project.title}
-                            initial={{ x: -50, opacity: 0 }} // Mulai dari kiri
-                            animate={{ x: 0, opacity: 1 }} // Geser ke posisi normal
-                            exit={{ x: 50, opacity: 0 }} // Geser ke kanan saat keluar
-                            transition={{
-                                type: "spring",
-                                stiffness: 200,
-                                damping: 20,
-                                delay: i * 0.05,
-                            }}
+                            layout
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.95 }}
+                            transition={{ duration: 0.4, delay: i * 0.05 }}
                         >
-                            <Card isBlurred isFooterBlurred className="rounded-2xl overflow-hidden cursor-pointer">
-                                <MagicCard className="rounded-2xl flex flex-col h-full" gradientColor="var(--magic-card-gradient)" gradientOpacity={0.1}>
-                                    {/* Cover + Badge */}
-                                    <div className="relative w-full h-40 md:h-48 lg:h-52 overflow-hidden rounded-t-2xl">
-                                        <motion.img
-                                            className="w-full h-full object-cover"
+                            <a 
+                                href={project.link} 
+                                target={project.link === "#portfolio" ? "_self" : "_blank"} 
+                                rel="noopener noreferrer"
+                                className="group block"
+                            >
+                                <div className="space-y-6">
+                                    {/* Image Container */}
+                                    <div className="relative aspect-[16/9] rounded-3xl overflow-hidden border border-black/5 dark:border-white/5 bg-background shadow-sm transition-all duration-500 group-hover:shadow-xl group-hover:-translate-y-1">
+                                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors z-10" />
+                                        <img
                                             src={project.cover}
                                             alt={project.title}
-                                            whileHover={{ scale: 1.1, rotate: 3 }}
-                                            transition={{
-                                                type: "spring",
-                                                stiffness: 200,
-                                                damping: 15,
-                                            }}
+                                            className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
                                         />
-
-                                        {/* Glass Badge */}
-                                        <button
-                                            className="absolute top-3 right-3 px-3 py-1 text-xs font-semibold rounded-full 
-               bg-white/20 dark:bg-black/30 text-white 
-               backdrop-blur-md border border-white/30 
-               shadow-md hover:bg-white/30 dark:hover:bg-black/40 
-               transition-colors"
-                                            type="button"
-                                        >
-                                            {project.badge}
-                                        </button>
-                                    </div>
-
-                                    {/* Content */}
-                                    <div className="flex flex-col justify-between flex-1 p-6">
-                                        <div>
-                                            <h4 className="text-xl font-semibold">{project.title}</h4>
-                                            <p className="text-gray-500 mt-2">{project.desc}</p>
+                                        
+                                        {/* Minimalist Badge Overlay */}
+                                        <div className="absolute top-6 right-6 z-20">
+                                            <div className="px-4 py-1.5 rounded-full bg-black/80 dark:bg-white/80 text-white dark:text-black backdrop-blur-md text-[10px] font-black tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
+                                                {project.badge}
+                                            </div>
                                         </div>
-                                        <div className="my-4"></div>
-
-                                        <a href={project.link} target={project.link == "#portfolio" ? "" : "_blank"} rel={project.link == "#portfolio" ? undefined : "noopener noreferrer"}>
-                                            <ShimmerButton className="shadow-2xl" shimmerColor={resolvedTheme == "light" ? "violet" : "violet"}>
-                                                <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">View Project</span>
-                                            </ShimmerButton>
-                                        </a>
                                     </div>
-                                </MagicCard>
-                            </Card>
+
+                                    {/* Text Content */}
+                                    <div className="space-y-3 px-2">
+                                        <div className="flex items-center justify-between gap-4">
+                                            <h3 className="text-2xl font-bold text-black dark:text-white tracking-tight group-hover:text-primary transition-colors">
+                                                {project.title}
+                                            </h3>
+                                            <div className="p-2 rounded-full bg-black/5 dark:bg-white/5 group-hover:bg-black dark:group-hover:bg-white group-hover:text-white dark:group-hover:text-black transition-all duration-300 -rotate-45 group-hover:rotate-0">
+                                                <ArrowUpRight className="w-5 h-5" />
+                                            </div>
+                                        </div>
+                                        <p className="text-gray-500 dark:text-gray-400 text-lg leading-relaxed line-clamp-2">
+                                            {project.desc}
+                                        </p>
+                                        
+                                        <div className="flex items-center gap-2 pt-2">
+                                            <span className="text-[10px] font-black tracking-[0.2em] text-gray-400 uppercase">View Case Study</span>
+                                            <div className="h-[1px] w-0 group-hover:w-8 bg-black dark:bg-white transition-all duration-500" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
                         </motion.div>
                     ))}
                 </AnimatePresence>
