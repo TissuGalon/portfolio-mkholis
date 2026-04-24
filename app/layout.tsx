@@ -1,5 +1,4 @@
 import { Metadata, Viewport } from "next";
-
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Link } from "@heroui/link";
 import clsx from "clsx";
@@ -67,10 +66,8 @@ export default function RootLayout({
                 href="https://heroui.com?utm_source=next-app-template"
                 title="heroui.com homepage"
               >
-                <span className="py-3">
-
-                </span>
-            {/*     <span className="text-default-600">Powered by</span>
+                <span className="py-3" />
+                {/*     <span className="text-default-600">Powered by</span>
                 <p className="text-primary">HeroUI</p> */}
               </Link>
             </footer>

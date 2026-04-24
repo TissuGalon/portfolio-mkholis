@@ -1,33 +1,29 @@
-import { useId, type ReactElement } from "react"
+import { useId, type ReactElement } from "react";
 
 type BacklightProps = {
-  children?: ReactElement
-  className?: string
-  blur?: number
-}
+  children?: ReactElement;
+  className?: string;
+  blur?: number;
+};
 
 export function Backlight({ blur = 20, children, className }: BacklightProps) {
-  const id = useId()
+  const id = useId();
 
   return (
     <div className={className}>
-      <svg width="0" height="0" aria-hidden="true">
-        <filter id={id} y="-50%" x="-50%" width="200%" height="200%">
+      <svg aria-hidden="true" height="0" width="0">
+        <filter height="200%" id={id} width="200%" x="-50%" y="-50%">
           <feGaussianBlur
             in="SourceGraphic"
-            stdDeviation={blur}
             result="blurred"
-          ></feGaussianBlur>
-          <feColorMatrix
-            type="saturate"
-            in="blurred"
-            values="4"
-          ></feColorMatrix>
-          <feComposite in="SourceGraphic" operator="over"></feComposite>
+            stdDeviation={blur}
+          />
+          <feColorMatrix in="blurred" type="saturate" values="4" />
+          <feComposite in="SourceGraphic" operator="over" />
         </filter>
       </svg>
 
       <div style={{ filter: `url(#${id})` }}>{children}</div>
     </div>
-  )
+  );
 }

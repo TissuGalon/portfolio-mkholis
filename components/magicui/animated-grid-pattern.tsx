@@ -15,26 +15,18 @@ export interface AnimatedGridPatternProps
   extends ComponentPropsWithoutRef<"svg"> {
   width?: number;
   height?: number;
-  x?: number;
-  y?: number;
-  strokeDasharray?: any;
   numSquares?: number;
   maxOpacity?: number;
   duration?: number;
-  repeatDelay?: number;
 }
 
 export function AnimatedGridPattern({
   width = 40,
   height = 40,
-  x = -1,
-  y = -1,
-  strokeDasharray = 0,
   numSquares = 50,
   className,
   maxOpacity = 0.5,
   duration = 4,
-  repeatDelay = 0.5,
   ...props
 }: AnimatedGridPatternProps) {
   const id = useId();
@@ -49,7 +41,6 @@ export function AnimatedGridPattern({
     ];
   }
 
-  // Adjust the generateSquares function to return objects with an id, x, and y
   function generateSquares(count: number) {
     return Array.from({ length: count }, (_, i) => ({
       id: i,
@@ -57,7 +48,6 @@ export function AnimatedGridPattern({
     }));
   }
 
-  // Function to update a single square's position
   const updateSquarePosition = (id: number) => {
     setSquares((currentSquares) =>
       currentSquares.map((sq) =>
@@ -71,14 +61,12 @@ export function AnimatedGridPattern({
     );
   };
 
-  // Update squares to animate in
   useEffect(() => {
     if (dimensions.width && dimensions.height) {
       setSquares(generateSquares(numSquares));
     }
   }, [dimensions, numSquares]);
 
-  // Resize observer to update container dimensions
   useEffect(() => {
     const resizeObserver = new ResizeObserver((entries) => {
       for (let entry of entries) {
@@ -116,18 +104,12 @@ export function AnimatedGridPattern({
           id={id}
           patternUnits="userSpaceOnUse"
           width={width}
-          x={x}
-          y={y}
         >
-          <path
-            d={`M.5 ${height}V.5H${width}`}
-            fill="none"
-            strokeDasharray={strokeDasharray}
-          />
+          <path d={`M.5 ${height}V.5H${width}`} fill="none" />
         </pattern>
       </defs>
       <rect fill={`url(#${id})`} height="100%" width="100%" />
-      <svg className="overflow-visible" x={x} y={y}>
+      <svg className="overflow-visible">
         {squares.map(({ pos: [x, y], id }, index) => (
           <motion.rect
             key={`${x}-${y}-${index}`}
