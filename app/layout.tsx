@@ -67,8 +67,11 @@ export default function RootLayout({
                 href="https://heroui.com?utm_source=next-app-template"
                 title="heroui.com homepage"
               >
-                <span className="text-default-600">Powered by</span>
-                <p className="text-primary">HeroUI</p>
+                <span className="py-3">
+
+                </span>
+            {/*     <span className="text-default-600">Powered by</span>
+                <p className="text-primary">HeroUI</p> */}
               </Link>
             </footer>
             <FloatingNavbar />
