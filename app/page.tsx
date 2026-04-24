@@ -9,7 +9,7 @@ import { Divider } from "@heroui/divider";
 
 // === MagicUI ===
 import { Github, Instagram, Linkedin, Mail, Phone, User, Camera, MapPin, Code2, ArrowUpRight, Search } from "lucide-react";
-
+import { Backlight } from "@/components/ui/backlight"
 import {
   ScrollVelocityContainer,
   ScrollVelocityRow,
@@ -289,6 +289,8 @@ export default function Home() {
             <Divider className="my-10" />
 
             <PortfolioSection />
+            <Divider className="my-10" />
+            <DesignPortfolioSection />
 
             {/* === CONTACT === */}
             <section className="relative overflow-hidden  flex items-center justify-center " id="contact">
@@ -535,6 +537,41 @@ function PortfolioSection() {
                     ))}
                 </AnimatePresence>
             </div>
+        </section>
+    );
+}
+
+function DesignPortfolioSection() {
+    return (
+        <section className="max-w-6xl mx-auto px-6 py-20" id="design-portfolio">
+            <motion.div 
+                className="mb-16 group text-center lg:text-left"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+            >
+                <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-black dark:text-white uppercase">
+                    Design Portfolio
+                </h2>
+                <div className="h-1.5 w-16 bg-black dark:bg-white mt-3 rounded-full group-hover:w-24 transition-all duration-500 origin-left mx-auto lg:mx-0" />
+            </motion.div>
+
+                   
+            <div className="w-full flex justify-center">
+                <div className="w-full max-w-5xl aspect-[4/3] md:aspect-[16/9] rounded-3xl overflow-hidden border border-black/5 dark:border-white/5 shadow-2xl bg-black/5 dark:bg-white/5">
+                    <iframe 
+                        src="https://www.behance.net/embed/project/244284409?ilo0=1" 
+                        className="w-full h-full no-scrollbar"
+                        scrolling="no"
+                        allowFullScreen 
+                        loading="lazy"
+                        frameBorder="0" 
+                        allow="clipboard-write" 
+                        referrerPolicy="strict-origin-when-cross-origin"
+                    />
+                </div>
+            </div>
+
         </section>
     );
 }
