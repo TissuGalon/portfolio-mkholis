@@ -176,81 +176,110 @@ export default function Home() {
             </section>
             <Divider className="my-10" />
             {/* === EDUCATION & SKILLS === */}
-            <section className="max-w-6xl mx-auto px-6 py-5" id="education">
-                <h2 className="text-center text-6xl font-bold tracking-tighter md:text-5xl lg:text-8xl">
-                    <BlurFade delay={0.3} inView>
-                        <AnimatedGradientText>EDUCATION & SKILLS</AnimatedGradientText>
-                    </BlurFade>
-                </h2>
-                <br />
-                <br />
-                <div className="space-y-8">
-                    {/* === EDUCATION === */}
-                    <div>
-                        <h3 className="text-2xl font-semibold  text-start">
-                            <AnimatedGradientText>EDUCATION</AnimatedGradientText>
-                        </h3>
-                        <Divider className="my-4 " />
-                        <div className="grid md:grid-cols-2 gap-10">
+            <section className="max-w-6xl mx-auto px-6 py-20" id="education">
+                {/* Header matching About Me style */}
+                <motion.div 
+                    className="mb-16 group text-center lg:text-left"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                >
+                    <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-black dark:text-white">
+                        Education & Skills
+                    </h2>
+                    <div className="h-1.5 w-16 bg-black dark:bg-white mt-3 rounded-full group-hover:w-24 transition-all duration-500 origin-left mx-auto lg:mx-0" />
+                </motion.div>
+
+                <div className="flex flex-col lg:flex-row gap-16">
+                    {/* === EDUCATION (Left Column) === */}
+                    <div className="flex-1 space-y-8">
+                        <div className="flex items-center gap-3 mb-6">
+                            <span className="text-[10px] font-black tracking-[0.3em] text-gray-400 uppercase">Academic Path</span>
+                            <div className="h-[1px] w-8 bg-gray-200 dark:bg-gray-800" />
+                        </div>
+                        
+                        <div className="space-y-6">
                             {[
                                 {
-                                    title: "SMK Negeri 2 Langsa",
-                                    desc: "Rekayasa Perangkat Lunak (2019 - 2022)",
-                                    extra: "Nilai Akhir: 84,81",
+                                    title: "Politeknik Negeri Lhokseumawe",
+                                    period: "2022 - Sekarang",
+                                    major: "Teknik Informatika",
+                                    score: "IPK: 3.45 / 4.00",
                                 },
                                 {
-                                    title: "Politeknik Negeri Lhokseumawe",
-                                    desc: "Teknik Informatika (2022 - Sekarang)",
-                                    extra: "IPK Terakhir: 3.45 / 4.00",
+                                    title: "SMK Negeri 2 Langsa",
+                                    period: "2019 - 2022",
+                                    major: "Rekayasa Perangkat Lunak",
+                                    score: "Nilai Akhir: 84,81",
                                 },
                             ].map((edu, i) => (
-                                <motion.div key={i} initial={{ opacity: 0, y: 40 }} transition={{ delay: i * 0.2 }} whileInView={{ opacity: 1, y: 0 }}>
-                                    <Card isBlurred>
-                                        <MagicCard className="p-5 rounded-2xl" gradientColor="var(--magic-card-gradient)" gradientOpacity={0.1}>
-                                            <h4 className="text-xl font-semibold">{edu.title}</h4>
-                                            <p className="dark:text-gray-400 text-gray-600">{edu.desc}</p>
-                                            <AuroraText className="font-medium">{edu.extra}</AuroraText>
-                                        </MagicCard>
-                                    </Card>
+                                <motion.div 
+                                    key={i} 
+                                    className="relative pl-8 border-l-2 border-black/5 dark:border-white/5 group"
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: i * 0.1 }}
+                                >
+                                    <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-background border-2 border-black dark:border-white group-hover:scale-125 transition-transform" />
+                                    <div className="space-y-1">
+                                        <span className="text-sm font-medium text-gray-500 uppercase tracking-wider">{edu.period}</span>
+                                        <h4 className="text-xl font-bold text-black dark:text-white">{edu.title}</h4>
+                                        <p className="text-lg text-gray-600 dark:text-gray-400">{edu.major}</p>
+                                        <div className="inline-block mt-2 px-3 py-1 bg-black/5 dark:bg-white/5 rounded-md text-sm font-semibold text-black dark:text-white">
+                                            {edu.score}
+                                        </div>
+                                    </div>
                                 </motion.div>
                             ))}
                         </div>
                     </div>
 
-                    <br />
+                    {/* === SKILLS (Right Column) === */}
+                    <div className="flex-1 space-y-8">
+                        <div className="flex items-center gap-3 mb-6">
+                            <span className="text-[10px] font-black tracking-[0.3em] text-gray-400 uppercase">Expertise & Tools</span>
+                            <div className="h-[1px] w-8 bg-gray-200 dark:bg-gray-800" />
+                        </div>
 
-                    {/* === SKILLS === */}
-                    <div>
-                        <h3 className="text-2xl font-semibold  text-start">
-                            <BlurFade delay={0.3} inView>
-                                <AnimatedGradientText>SKILLS</AnimatedGradientText>
-                            </BlurFade>
-                        </h3>
-                        <Divider className="my-4" />
-                        <div className="grid md:grid-cols-4 gap-8 text-center">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {[
                                 {
                                     title: "Programming",
                                     content: "Dart, PHP, HTML, JavaScript, Python",
+                                    icon: <Code2 className="w-5 h-5" />
                                 },
                                 {
-                                    title: "Tools",
+                                    title: "Tools & Design",
                                     content: "Photoshop, Premiere Pro, Blender, Figma, Canva",
+                                    icon: <Camera className="w-5 h-5" />
                                 },
                                 {
                                     title: "Soft Skills",
                                     content: "Critical Thinking, Teamwork, Communication",
+                                    icon: <User className="w-5 h-5" />
                                 },
                                 {
                                     title: "Languages",
-                                    content: "Indonesia (Native), English (Communication)",
+                                    content: "Indonesia (Native), English (B2)",
+                                    icon: <MapPin className="w-5 h-5" />
                                 },
                             ].map((skill, i) => (
-                                <motion.div key={i} className="border rounded-2xl shadow-lg hover:scale-105 transition" initial={{ opacity: 0, y: 30 }} transition={{ delay: i * 0.2 }} whileInView={{ opacity: 1, y: 0 }}>
-                                    <MagicCard className="p-5 rounded-2xl" gradientColor="var(--magic-card-gradient)" gradientOpacity={0.1}>
-                                        <AuroraText className="font-semibold text-lg mb-2">{skill.title}</AuroraText>
-                                        <p className="dark:text-gray-400 text-gray-600">{skill.content}</p>
-                                    </MagicCard>
+                                <motion.div 
+                                    key={i} 
+                                    className="p-6 rounded-2xl border border-black/5 dark:border-white/5 bg-background shadow-sm hover:shadow-md transition-all duration-300 group"
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: i * 0.1 }}
+                                >
+                                    <div className="flex items-center gap-3 mb-3">
+                                        <div className="p-2 rounded-lg bg-black text-white dark:bg-white dark:text-black transition-colors group-hover:bg-primary group-hover:text-white">
+                                            {skill.icon}
+                                        </div>
+                                        <h4 className="font-bold text-black dark:text-white uppercase tracking-tight">{skill.title}</h4>
+                                    </div>
+                                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                                        {skill.content}
+                                    </p>
                                 </motion.div>
                             ))}
                         </div>
