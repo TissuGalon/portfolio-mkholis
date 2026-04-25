@@ -32,10 +32,7 @@ import {
   Search,
 } from "lucide-react";
 
-import {
-  ScrollVelocityContainer,
-  ScrollVelocityRow,
-} from "@/components/ui/scroll-based-velocity";
+import { LightRays } from "@/components/ui/light-rays"
 import { Ripple } from "@/components/magicui/ripple";
 import { RainbowButton } from "@/components/magicui/rainbow-button";
 import { ShinyButton } from "@/components/magicui/shiny-button";
@@ -109,8 +106,9 @@ export default function Home() {
             </div>
           </BlurFade>
 
-          <BorderBeam duration={8} size={400} />
+         
         </section>
+        
         <Ripple />
       </div>
       <section className="bg-background relative w-full overflow-hidden py-6">
@@ -124,17 +122,11 @@ export default function Home() {
                     <p className="text-1xl font-bold bg-background bg-clip-text text-primary px-8">🚀 Flutter · 💻 Web Development · 📱 Mobile Apps · 🎨 UI/UX Design · 🔥 Firebase · ⚡ Next.js · 🛠️ Productivity</p>
                 </motion.div> */}
 
-        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-          <ScrollVelocityContainer className="text-4xl font-bold tracking-[-0.02em] md:text-7xl md:leading-20">
-            <ScrollVelocityRow baseVelocity={15} direction={1}>
-              Fullstack Developer
-            </ScrollVelocityRow>
-            <ScrollVelocityRow baseVelocity={15} direction={-1}>
-              Graphic Designer
-            </ScrollVelocityRow>
-          </ScrollVelocityContainer>
-          <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r" />
-          <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l" />
+        <div className="relative flex w-full flex-col items-center justify-center py-0">
+          <div className="text-4xl md:text-7xl font-bold tracking-tighter text-center space-y-1">
+            <h2 className="text-black dark:text-white uppercase">Fullstack Developer</h2>
+            <h2 className="text-black/40 dark:text-white/40 uppercase">Graphic Designer</h2>
+          </div>
         </div>
       </section>
       <br />
@@ -355,6 +347,8 @@ export default function Home() {
       <Divider className="my-10" />
       <DesignPortfolioSection />
 
+      <ActivitySection />
+
       {/* === CONTACT === */}
       <section
         className="relative overflow-hidden  flex items-center justify-center "
@@ -410,7 +404,7 @@ export default function Home() {
               <Sosmed />
             </CardFooter>
           </Card>
-          <BorderBeam duration={8} size={400} />
+        
         </div>
       </section>
     </div>
@@ -428,7 +422,7 @@ function PortfolioSection() {
       title: "Parzello Website",
       desc: "Official website for Parzello digital agency.",
       link: "https://parzello.vercel.app/",
-      cover: "images/portfolio/parzelloweb.webp",
+      cover: "/images/portfolio/parzelloweb.webp",
       badge: "Web",
     },
     {
@@ -443,42 +437,42 @@ function PortfolioSection() {
       title: "Centrepoint",
       desc: "Community management app for POLICY organization at PNL.",
       link: "#portfolio",
-      cover: "images/portfolio/centrepoint.webp",
+      cover: "/images/portfolio/centrepoint.webp",
       badge: "Mobile",
     },
     {
       title: "Personal Portfolio",
       desc: "My personal portfolio website built with Next.js & TailwindCSS.",
       link: "https://mkholis-portfolio.pages.dev/",
-      cover: "images/portfolio/webportfolio.webp",
+      cover: "/images/portfolio/webportfolio.webp",
       badge: "Web",
     },
     {
       title: "Website UKM-POLICY",
       desc: "Official website for Polytechnic Linux Community with dynamic content and responsive design.",
       link: "https://www.ukmpolicy.com/",
-      cover: "images/portfolio/webpolicy.webp",
+      cover: "/images/portfolio/webpolicy.webp",
       badge: "Web",
     },
     {
       title: "E-Konsul",
       desc: "Consultation app for students and lecturers at Politeknik Negeri Lhokseumawe.",
       link: "#portfolio",
-      cover: "images/portfolio/ekonsul.webp",
+      cover: "/images/portfolio/ekonsul.webp",
       badge: "Mobile",
     },
     {
       title: "Emergency Center (EMTER)",
       desc: "Emergency response app with real-time chat, maps, and quick call features.",
       link: "#portfolio",
-      cover: "images/portfolio/emter.webp",
+      cover: "/images/portfolio/emter.webp",
       badge: "Mobile",
     },
     {
       title: "Ticzy – Productivity App",
       desc: "A daily productivity management app with To-Do, Finance, Scheduler, and Notes.",
       link: "https://play.google.com/store/apps/details?id=com.parzello.ticzy",
-      cover: "images/portfolio/ticzy.webp",
+      cover: "/images/portfolio/ticzy.webp",
       badge: "Mobile",
     },
   ];
@@ -622,6 +616,83 @@ function PortfolioSection() {
             </motion.div>
           ))}
         </AnimatePresence>
+      </div>       
+    </section>
+  );
+}
+
+function ActivitySection() {
+  const activities = [
+    {
+      title: "Hackathon KMIPN VI",
+      date: "2024",
+      location: "Politeknik Negeri Jakarta",
+      image: "/images/kegiatan/kmipn.jpg",
+      desc: "Finalist in the National Polytechnic Informatics Competition (KMIPN) VI, showcasing innovation in software development.",
+    },
+    {
+      title: "Komit PNL",
+      date: "2024",
+      location: "Politeknik Negeri Lhokseumawe",
+      image: "/images/kegiatan/komitpnl.jpg",
+      desc: "Involved in the Komit PNL community, organizing technology-focused events and workshops for students.",
+    },
+    {
+      title: "UKM POLICY",
+      date: "2023",
+      location: "Politeknik Negeri Lhokseumawe",
+      image: "/images/kegiatan/ukmpolicy.JPG",
+      desc: "Contributing as an active member of the Polytechnic Linux Community, fostering open-source development and collaboration.",
+    },
+  ];
+
+  return (
+    <section className="max-w-6xl mx-auto px-6 py-20" id="activities">
+      <motion.div
+        className="mb-16 group text-center lg:text-left"
+        initial={{ opacity: 0, y: 20 }}
+        transition={{ duration: 0.5 }}
+        whileInView={{ opacity: 1, y: 0 }}
+      >
+        <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-black dark:text-white uppercase transition-colors">
+          Activity Documentation
+        </h2>
+        <div className="h-1.5 w-16 bg-black dark:bg-white mt-3 rounded-full group-hover:w-24 transition-all duration-500 origin-left mx-auto lg:mx-0" />
+      </motion.div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {activities.map((act, i) => (
+          <BlurFade key={act.title} delay={0.1 + i * 0.1} inView>
+            <div className="group relative overflow-hidden rounded-3xl border border-black/5 dark:border-white/5 bg-background shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+              <div className="relative aspect-[16/10] overflow-hidden">
+                <Image
+                  fill
+                  alt={act.title}
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  src={act.image}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
+
+                <div className="absolute bottom-6 left-6 right-6 text-white translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-bold uppercase tracking-widest text-white border border-white/20">
+                      {act.date}
+                    </span>
+                    <span className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-widest opacity-80">
+                      <MapPin className="w-3 h-3" /> {act.location}
+                    </span>
+                  </div>
+                  <h3 className="text-2xl font-bold tracking-tight mb-2 whitespace-normal break-words">
+                    {act.title}
+                  </h3>
+                  <p className="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 line-clamp-2 text-white/80">
+                    {act.desc}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </BlurFade>
+        ))}
       </div>
     </section>
   );

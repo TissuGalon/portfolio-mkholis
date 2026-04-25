@@ -11,6 +11,7 @@ import {
   Palette,
   Sun,
   Moon,
+  Camera,
 } from "lucide-react";
 import { Tooltip } from "@heroui/react";
 import { Divider } from "@heroui/divider";
@@ -39,6 +40,11 @@ const navItems = [
     label: "Portfolio",
     href: "/#portfolio",
     icon: Briefcase,
+  },
+  {
+    label: "Activities",
+    href: "/#activities",
+    icon: Camera,
   },
   {
     label: "Design",
