@@ -64,22 +64,22 @@ export default async function PortfolioDetailPage({ params }: PageProps) {
       </h4>
     ),
     p: ({ children }: any) => (
-      <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed mb-6 font-medium">
+      <p className="text-white text-lg leading-relaxed mb-6 font-medium">
         {children}
       </p>
     ),
     ul: ({ children }: any) => (
-      <ul className="list-disc pl-6 mb-6 text-gray-600 dark:text-gray-400 space-y-2 font-medium">
+      <ul className="list-disc pl-6 mb-6 text-white space-y-2 font-medium">
         {children}
       </ul>
     ),
     ol: ({ children }: any) => (
-      <ol className="list-decimal pl-6 mb-6 text-gray-600 dark:text-gray-400 space-y-2 font-medium">
+      <ol className="list-decimal pl-6 mb-6 text-white space-y-2 font-medium">
         {children}
       </ol>
     ),
     li: ({ children }: any) => (
-      <li className="text-lg leading-relaxed">
+      <li className="text-lg leading-relaxed text-white">
         {children}
       </li>
     ),
@@ -121,7 +121,7 @@ export default async function PortfolioDetailPage({ params }: PageProps) {
           {project.title}
         </h1>
 
-        <p className="text-xl md:text-2xl text-gray-500 dark:text-gray-400 max-w-3xl leading-relaxed font-semibold">
+        <p className="text-xl md:text-2xl text-white max-w-3xl leading-relaxed font-semibold">
           {project.desc}
         </p>
       </div>
