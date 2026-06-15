@@ -32,6 +32,8 @@ import {
   Code2,
   ArrowUpRight,
   Search,
+  FileText,
+  Download,
 } from "lucide-react";
 
 import { Ripple } from "@/components/magicui/ripple";
@@ -39,6 +41,7 @@ import { RainbowButton } from "@/components/magicui/rainbow-button";
 import { ShinyButton } from "@/components/magicui/shiny-button";
 import { TextAnimate } from "@/components/magicui/text-animate";
 import { AnimatedGradientText } from "@/components/magicui/animated-gradient-text";
+import { ScrollVelocityContainer, ScrollVelocityRow } from "@/components/ui/scroll-based-velocity";
 // === Icons ===
 export default function HomeClient({ projects }: { projects: ProjectItem[] }) {
   return (
@@ -112,23 +115,19 @@ export default function HomeClient({ projects }: { projects: ProjectItem[] }) {
         
         <Ripple />
       </div>
-      <section className="bg-background relative w-full overflow-hidden py-6">
-        {/* Background Blur Layer */}
-        <div className="absolute inset-0 bg-primary opacity-5 backdrop-blur-md" />
-
-        {/* Running Text */}
-        {/*    <motion.div animate={{ x: ["0%", "-100%"] }} className="flex whitespace-nowrap relative" transition={{ repeat: Infinity, duration: 20, ease: "linear" }}>
-                    <p className="text-1xl font-bold bg-background bg-clip-text text-primary px-8">🚀 Flutter · 💻 Web Development · 📱 Mobile Apps · 🎨 UI/UX Design · 🔥 Firebase · ⚡ Next.js · 🛠️ Productivity</p>
-                    <p className="text-1xl font-bold bg-background bg-clip-text text-primary px-8">🚀 Flutter · 💻 Web Development · 📱 Mobile Apps · 🎨 UI/UX Design · 🔥 Firebase · ⚡ Next.js · 🛠️ Productivity</p>
-                    <p className="text-1xl font-bold bg-background bg-clip-text text-primary px-8">🚀 Flutter · 💻 Web Development · 📱 Mobile Apps · 🎨 UI/UX Design · 🔥 Firebase · ⚡ Next.js · 🛠️ Productivity</p>
-                </motion.div> */}
-
-        <div className="relative flex w-full flex-col items-center justify-center py-0">
-          <div className="text-4xl md:text-7xl font-bold tracking-tighter text-center space-y-1">
-            <h2 className="text-black dark:text-white uppercase">Fullstack Developer</h2>
-            <h2 className="text-black/40 dark:text-white/40 uppercase">Graphic Designer</h2>
-          </div>
-        </div>
+      <section className="bg-background relative w-full overflow-hidden py-12 border-y border-black/5 dark:border-white/5 bg-black/[0.01] dark:bg-white/[0.01]">
+        <ScrollVelocityContainer>
+          <ScrollVelocityRow baseVelocity={3} direction={1} className="py-2">
+            <span className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-black dark:text-white mr-6 select-none">
+              Fullstack Developer &nbsp;·&nbsp;
+            </span>
+          </ScrollVelocityRow>
+          <ScrollVelocityRow baseVelocity={3} direction={-1} className="py-2">
+            <span className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-black/30 dark:text-white/30 mr-6 select-none">
+              Graphic Designer &nbsp;·&nbsp;
+            </span>
+          </ScrollVelocityRow>
+        </ScrollVelocityContainer>
       </section>
       <br />
       <br />
@@ -250,13 +249,13 @@ export default function HomeClient({ projects }: { projects: ProjectItem[] }) {
                   title: "Politeknik Negeri Lhokseumawe",
                   period: "2022 - Sekarang",
                   major: "Teknik Informatika",
-                  score: "IPK: 3.45 / 4.00",
+                  score: "IPK: 3.53 / 4.00",
                 },
                 {
-                  title: "SMK Negeri 2 Langsa",
+                  title: "SMK Negeri 2 Kota Langsa",
                   period: "2019 - 2022",
                   major: "Rekayasa Perangkat Lunak",
-                  score: "Nilai Akhir: 84,81",
+                  score: "Nilai Akhir: 84.81",
                 },
               ].map((edu, i) => (
                 <motion.div
@@ -299,12 +298,12 @@ export default function HomeClient({ projects }: { projects: ProjectItem[] }) {
               {[
                 {
                   title: "Programming",
-                  content: "Dart, PHP, HTML, JavaScript, Python",
+                  content: "Dart, JavaScript, PHP, Python, HTML/CSS",
                   icon: <Code2 className="w-5 h-5" />,
                 },
                 {
                   title: "Tools & Design",
-                  content: "Photoshop, Premiere Pro, Blender, Figma, Canva",
+                  content: "Figma, Android Studio, GitHub, Photoshop, Blender, Canva",
                   icon: <Camera className="w-5 h-5" />,
                 },
                 {
@@ -314,7 +313,7 @@ export default function HomeClient({ projects }: { projects: ProjectItem[] }) {
                 },
                 {
                   title: "Languages",
-                  content: "Indonesia (Native), English (B2)",
+                  content: "Indonesia (Native), English (Beginner / A1)",
                   icon: <MapPin className="w-5 h-5" />,
                 },
               ].map((skill, i) => (
@@ -800,47 +799,129 @@ function ModalCV() {
       >
         <TextAnimate animation="scaleUp"> 📃 Document</TextAnimate>
       </RainbowButton>
-      <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
-        <ModalContent className="bg-white/10 dark:bg-black/20 backdrop-blur-lg border border-white/20 shadow-xl">
+      <Modal 
+        isOpen={isOpen} 
+        onOpenChange={onOpenChange}
+        backdrop="blur"
+        classNames={{
+          backdrop: "bg-black/60 backdrop-blur-md",
+        }}
+        size="xl"
+      >
+        <ModalContent className="bg-white/95 dark:bg-black/90 text-black dark:text-white backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-2xl rounded-3xl p-4">
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">
-                Download Document
+              <ModalHeader className="flex flex-col gap-1 text-center pt-6 pb-2">
+                <span className="text-xs font-black tracking-[0.3em] text-violet-500 dark:text-violet-400 uppercase">
+                  Available Files
+                </span>
+                <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight mt-1 text-black dark:text-white">
+                  Download Documents
+                </h3>
+                <p className="text-xs text-gray-500 dark:text-gray-400 font-medium max-w-sm mx-auto leading-relaxed mt-1">
+                  Pilih dokumen yang ingin Anda unduh atau lihat untuk mengetahui lebih banyak tentang keahlian dan karya saya.
+                </p>
               </ModalHeader>
-              <ModalBody className="flex flex-col gap-4 ">
-                <RainbowButton
-                  color="primary"
-                  size="lg"
-                  onClick={() => {
-                    window.open("/files/CV_Muhammad_Kholis.pdf", "_blank");
-                    onClose();
-                  }}
-                >
-                  <TextAnimate animation="scaleUp"> 📄 Download CV</TextAnimate>
-                </RainbowButton>
+              
+              <ModalBody className="flex flex-col gap-6 py-6">
+                {/* Resume (ID) Card */}
+                <div className="flex items-center justify-between p-5 rounded-2xl border border-black/5 dark:border-white/5 bg-black/[0.02] dark:bg-white/[0.03] hover:bg-black/[0.04] dark:hover:bg-white/[0.06] hover:border-black/10 dark:hover:border-white/10 transition-all duration-300 group">
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 rounded-xl bg-violet-500/10 border border-violet-500/20 text-violet-600 dark:text-violet-400 group-hover:scale-110 transition-transform duration-300">
+                      <FileText className="w-6 h-6" />
+                    </div>
+                    <div className="text-left">
+                      <h4 className="font-bold text-base tracking-wide text-black dark:text-white">
+                        Resume (Bahasa Indonesia)
+                      </h4>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 font-medium mt-0.5">
+                        Riwayat akademik, pengalaman kerja, dan keahlian (Bahasa).
+                      </p>
+                      <span className="inline-block mt-2 text-[9px] font-black uppercase tracking-wider text-violet-600 dark:text-violet-400 bg-violet-500/10 px-2.5 py-0.5 rounded-md">
+                        PDF Format
+                      </span>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => {
+                      window.open("/files/resume-id.pdf", "_blank");
+                      onClose();
+                    }}
+                    className="flex items-center gap-1.5 px-4 py-2.5 bg-black dark:bg-white text-white dark:text-black font-bold rounded-xl text-xs uppercase tracking-wider hover:scale-[1.03] active:scale-[0.97] transition-all duration-300 cursor-pointer shadow-lg shadow-black/10 dark:shadow-white/5 shrink-0"
+                  >
+                    <Download className="w-3.5 h-3.5" />
+                    Unduh
+                  </button>
+                </div>
 
-                <RainbowButton
-                  color="primary"
-                  size="lg"
-                  variant="outline"
-                  onClick={() => {
-                    window.open(
-                      "/files/Portfolio_Muhammad_Kholis.pdf",
-                      "_blank",
-                    );
-                    onClose();
-                  }}
-                >
-                  <TextAnimate animation="scaleUp">
-                    📑 Download Portfolio
-                  </TextAnimate>
-                </RainbowButton>
+                {/* Resume (ENG) Card */}
+                <div className="flex items-center justify-between p-5 rounded-2xl border border-black/5 dark:border-white/5 bg-black/[0.02] dark:bg-white/[0.03] hover:bg-black/[0.04] dark:hover:bg-white/[0.06] hover:border-black/10 dark:hover:border-white/10 transition-all duration-300 group">
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 rounded-xl bg-violet-500/10 border border-violet-500/20 text-violet-600 dark:text-violet-400 group-hover:scale-110 transition-transform duration-300">
+                      <FileText className="w-6 h-6" />
+                    </div>
+                    <div className="text-left">
+                      <h4 className="font-bold text-base tracking-wide text-black dark:text-white">
+                        Resume (English)
+                      </h4>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 font-medium mt-0.5">
+                        Academic history, work experience, and skills (English).
+                      </p>
+                      <span className="inline-block mt-2 text-[9px] font-black uppercase tracking-wider text-violet-600 dark:text-violet-400 bg-violet-500/10 px-2.5 py-0.5 rounded-md">
+                        PDF Format
+                      </span>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => {
+                      window.open("/files/resume-eng.pdf", "_blank");
+                      onClose();
+                    }}
+                    className="flex items-center gap-1.5 px-4 py-2.5 bg-transparent border border-black/10 dark:border-white/10 hover:border-black/30 dark:hover:border-white/30 text-black dark:text-white font-bold rounded-xl text-xs uppercase tracking-wider hover:scale-[1.03] active:scale-[0.97] transition-all duration-300 cursor-pointer shrink-0"
+                  >
+                    <Download className="w-3.5 h-3.5" />
+                    Unduh
+                  </button>
+                </div>
+
+                {/* Portfolio Card */}
+                <div className="flex items-center justify-between p-5 rounded-2xl border border-black/5 dark:border-white/5 bg-black/[0.02] dark:bg-white/[0.03] hover:bg-black/[0.04] dark:hover:bg-white/[0.06] hover:border-black/10 dark:hover:border-white/10 transition-all duration-300 group">
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform duration-300">
+                      <FileText className="w-6 h-6" />
+                    </div>
+                    <div className="text-left">
+                      <h4 className="font-bold text-base tracking-wide text-black dark:text-white">
+                        Project Portfolio
+                      </h4>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 font-medium mt-0.5">
+                        Kumpulan studi kasus lengkap dan dokumentasi proyek.
+                      </p>
+                      <span className="inline-block mt-2 text-[9px] font-black uppercase tracking-wider text-blue-600 dark:text-blue-400 bg-blue-500/10 px-2.5 py-0.5 rounded-md">
+                        PDF Format
+                      </span>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => {
+                      window.open("/files/Portfolio_Muhammad_Kholis.pdf", "_blank");
+                      onClose();
+                    }}
+                    className="flex items-center gap-1.5 px-4 py-2.5 bg-transparent border border-black/10 dark:border-white/10 hover:border-black/30 dark:hover:border-white/30 text-black dark:text-white font-bold rounded-xl text-xs uppercase tracking-wider hover:scale-[1.03] active:scale-[0.97] transition-all duration-300 cursor-pointer shrink-0"
+                  >
+                    <Download className="w-3.5 h-3.5" />
+                    Unduh
+                  </button>
+                </div>
               </ModalBody>
 
-              <ModalFooter>
-                <Button color="primary" variant="ghost" onPress={onClose}>
-                  Close
-                </Button>
+              <ModalFooter className="border-t border-black/5 dark:border-white/5 pt-4">
+                <button 
+                  onClick={onClose} 
+                  className="px-5 py-2.5 text-xs text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white font-bold uppercase tracking-wider transition-colors cursor-pointer"
+                >
+                  Tutup
+                </button>
               </ModalFooter>
             </>
           )}
