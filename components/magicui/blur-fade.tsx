@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  AnimatePresence,
   motion,
   useInView,
   UseInViewOptions,
@@ -60,23 +59,20 @@ export function BlurFade({
   const combinedVariants = variant || defaultVariants;
 
   return (
-    <AnimatePresence>
-      <motion.div
-        ref={ref}
-        animate={isInView ? "visible" : "hidden"}
-        className={className}
-        exit="hidden"
-        initial="hidden"
-        transition={{
-          delay: 0.04 + delay,
-          duration,
-          ease: "easeOut",
-        }}
-        variants={combinedVariants}
-        {...props}
-      >
-        {children}
-      </motion.div>
-    </AnimatePresence>
+    <motion.div
+      ref={ref}
+      animate={isInView ? "visible" : "hidden"}
+      className={className}
+      initial="hidden"
+      transition={{
+        delay: 0.04 + delay,
+        duration,
+        ease: "easeOut",
+      }}
+      variants={combinedVariants}
+      {...props}
+    >
+      {children}
+    </motion.div>
   );
 }

@@ -34,24 +34,23 @@ import {
   Search,
 } from "lucide-react";
 
-import { LightRays } from "@/components/ui/light-rays"
 import { Ripple } from "@/components/magicui/ripple";
 import { RainbowButton } from "@/components/magicui/rainbow-button";
 import { ShinyButton } from "@/components/magicui/shiny-button";
 import { TextAnimate } from "@/components/magicui/text-animate";
 import { AnimatedGradientText } from "@/components/magicui/animated-gradient-text";
-import { BorderBeam } from "@/components/magicui/border-beam";
 // === Icons ===
 export default function HomeClient({ projects }: { projects: ProjectItem[] }) {
   return (
     <div className="bg-background overflow-x-hidden">
       <div
         className="
-    absolute inset-0 
-    hidden dark:block 
-    bg-[url('/images/nobg.webp')] 
-    bg-cover bg-center bg-fixed bg-blend-screen
-  "
+          fixed inset-0 
+          hidden dark:block 
+          bg-[url('/images/nobg.webp')] 
+          bg-cover bg-center bg-blend-screen
+          pointer-events-none
+        "
         style={{ opacity: 0.15 }}
       />
 

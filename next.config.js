@@ -17,6 +17,18 @@ const nextConfig = {
     ],
   },
   transpilePackages: ["react-markdown"],
+  eslint: {
+    ignoreDuringBuilds: process.env.NEXT_DISABLE_ESLINT === "1",
+  },
+  typescript: {
+    ignoreBuildErrors: process.env.NEXT_DISABLE_TYPECHECK === "1",
+  },
+  experimental: {
+    optimizePackageImports: [
+      "@heroui/react",
+      "lucide-react"
+    ],
+  },
 };
 
 export default nextConfig;
