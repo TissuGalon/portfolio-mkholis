@@ -16,6 +16,8 @@ const nextConfig = {
       },
     ],
   },
+  transpilePackages: ["react-markdown"],
 };
 
 export default nextConfig;
+
